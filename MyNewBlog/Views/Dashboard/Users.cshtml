@@ -1,0 +1,76 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@{
+    Layout = "~/Views/Dashboard/_DashLayout.cshtml";
+
+    ViewBag.item = "users";
+
+}
+
+@Styles.Render("~/Content/Dash/css")
+<div class="row">
+    <div class="col-md-4 col-md-offset-10">
+        <button class="btn btn-primary btn-sm" id="add_modal_btn">新增</button>
+        <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
+
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    用户名
+                </th>
+                <th>
+                    密码
+                </th>
+                <th>
+                    操作
+                </th>
+                <th>
+                    全选/反选 <input type="checkbox" id="check_all" />
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Users)
+            {
+                <tr>
+                    <td>
+                        @item.id.ToString()
+                    </td>
+
+                    <td>
+                        @item.userName.ToString()
+                  
+                    </td>
+
+                    <td>
+                        @item.userPassword.ToString()
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
+                        @Html.ActionLink("删除", "Delete", new { id = item.id })
+
+
+                    </td>
+                    <td>
+                        <input type='checkbox' class='check_item' />
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="t-center">
+
+    @Html.PagedListPager((IPagedList)(ViewBag.Users), page => Url.Action("Users",
+        new { page }))
+</div>

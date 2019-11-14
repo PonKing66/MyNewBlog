@@ -1,0 +1,50 @@
+﻿@model MyNewBlog.Models.Comment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.topic_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.topic_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.from_uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.from_uid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

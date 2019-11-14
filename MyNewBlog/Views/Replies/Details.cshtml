@@ -1,0 +1,66 @@
+﻿@model MyNewBlog.Models.Reply
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reply</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.comment_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.comment_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reply_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reply_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.replty_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.replty_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.from_uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.from_uid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.to_uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.to_uid)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

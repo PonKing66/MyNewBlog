@@ -1,0 +1,48 @@
+﻿@model PagedList.IPagedList<MyNewBlog.Models.Article>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "资讯";
+}
+
+
+<section id="container">
+    <div class="wrap-container">
+        <div class="zerogrid">
+            @foreach (var item in Model)
+            {
+                <article>
+                    <div class="row wrap-post">
+                        <!--Start Box-->
+                        <div class="entry-header">
+                            <span class="time">@item.date</span>
+                            <h2 class="entry-title">
+                                <a href="#">@item.title</a>
+                            </h2>
+                            <span class="cat-links"><a href="#">@item.author</a></span>
+                        </div>
+                        <div class="post-thumbnail-wrap">
+                            <img src="">
+                        </div>
+                        <div class="entry-content">
+                            <p>
+
+                            </p>
+                            @Html.ActionLink("Read More", "Details", new { categoryId = ViewBag.categoryId, id = item.id })
+                        </div>
+                    </div>
+                </article>
+            }
+
+        </div>
+    </div>
+    <!--分页没搞点-->
+    <div class="t-center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Archives",
+            new { categoryId = ViewBag.categoryId, page }))
+    </div>
+
+</section>

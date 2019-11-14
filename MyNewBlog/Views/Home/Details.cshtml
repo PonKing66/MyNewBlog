@@ -1,0 +1,133 @@
+﻿@model MyNewBlog.Models.Article
+
+
+@{
+    ViewBag.Title = "Details";
+    MvcHtmlString mvcHtmlString = new MvcHtmlString(Model.description.ToString());
+}
+
+    <div class="wrap-container">
+        <article class="single-post zerogrid">
+            <div class="row wrap-post">
+                <div class="entry-header">
+                    <span class="time">@Model.date</span>
+                    <h1 class="entry-title">
+                        @Model.title
+                    </h1>
+                    <span class="@Model.link"><a href="#">@Model.author</a>, <a href="#"></a></span>
+                </div>
+
+                <div class="post-thumbnail-wrap">
+                    <img src="">
+                </div>
+
+                <div class="t-center">
+      
+                        <div class="modal-content popover-content">
+                            @mvcHtmlString
+                        </div>
+                 
+                   
+                  
+                </div>
+              
+            </div>
+        </article>
+
+
+ 
+            <div class="row">
+                <div class="container">
+                    <div class="panel panel-default">
+                        <div class="page-header">
+                            <textarea class="form-horizontal"
+                                      style="min-width:100%" rows="10" ></textarea>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <button type="button" class="btn btn-default">Left</button>
+                                <button type="button" class="btn btn-default">Middle</button>
+                            </div>
+                        </div>
+                        <div class="panel-body container-fluid">
+                            <ul class="media-list list-group">
+
+                                <li class="media list-group-item">
+                                    <div class="media">
+                                        <div class="media-left media">
+                                            <a href="#">
+                                                <img class="media-object rounded-circle" src="~/images/header/2.jpg"  style="width:50px" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">
+                                                面盲东&nbsp;
+                                                <span class="label label-default">2019.12.12</span>
+                                            </h4>
+                                            我觉得还行
+                                        </div>
+                                    </div>
+                                  
+                                </li>
+
+                                <li class="media list-group-item">
+                            
+                            
+                                        <div class="media-left">
+                                            <a href="#">
+                                                <img class="media-object rounded-circle" src="~/images/header/3.jpg" style="width:50px" alt="...">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4 class="media-heading">
+                                                    一亿小目标&nbsp;<span class="label label-default">
+                                                        2019.12.12
+                                                    </span>
+                                                </h4>
+                                                <p>我觉得还行</p>
+
+                                                <hr>
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object rounded-circle" style="width:30px" src="~/images/header/0.jpg" alt="...">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h5 class="media-heading">
+                                                            悔创阿里杰克马<span class="label label-default">
+                                                                2019.12.12
+                                                            </span>&nbsp;<span class="label label-info">回复</span>&nbsp;一亿小目标
+                                                        </h5>
+                                                        <p>我觉得还行</p>
+                                                    </div>
+                                                </div>
+
+                                                <hr>
+
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <a href="#">
+                                                            <img class="media-object rounded-circle" style="width:30px" src="~/images/header/1.jpg" alt="...">
+                                                        </a>
+                                                    </div>
+                                                    <div class="media-body">
+
+                                                        <h5 class="media-heading">
+                                                            普通家庭马<span class="label label-default">2019.12.12</span>
+                                                            &nbsp;<span class="label label-info">回复</span>&nbsp;一亿小目标
+                                                        </h5>
+                                                        我觉得不行
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                                          
+                                </li>
+                         
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
