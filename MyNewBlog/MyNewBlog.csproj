@@ -175,10 +175,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RepliesController.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
-    <Compile Include="WebServiceDash.asmx.cs">
-      <DependentUpon>WebServiceDash.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -261,7 +257,6 @@
     <Content Include="images\newsImages\7.jpg" />
     <Content Include="images\newsImages\8.jpg" />
     <Content Include="images\newsImages\9.jpg" />
-    <Content Include="WebServiceDash.asmx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\css\font-awesome.css" />
     <Content Include="fonts\css\font-awesome.min.css" />

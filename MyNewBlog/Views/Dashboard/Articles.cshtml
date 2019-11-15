@@ -8,8 +8,8 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
-<!-- 添加文章模态框 -->
-<!-- Modal -->
+<!-- 添加文章Modal-->
+
 <div class="modal fade" id="article_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -45,7 +45,7 @@
                         <label for="inputState">分类</label>
                         <select id="inputState_add" class="form-control">
                             @*<option selected>Choose...</option>
-                <option>...</option>*@
+                                <option>...</option>*@
                         </select>
                     </div>
 
@@ -70,7 +70,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterTitle">添加文章</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">编辑文章</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -84,7 +84,7 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">原链接</label>
-                        <input type="url" class="form-control" id="link_update_input" placeholder="Link">
+                        <input type="text" class="form-control" id="link_update_input" placeholder="Link">
                     </div>
 
                     <div class="form-group">
@@ -113,7 +113,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="article_update_btn">Save changes</button>
             </div>
         </div>
     </div>
@@ -125,6 +125,17 @@
         <div class="col-md-4 col-md-offset-10">
             <button class="btn btn-primary btn-sm" id="article_add_modal_btn">新增</button>
             <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
+
+            <hr />
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile02">
+                    <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <span class="input-group-text" id="inputGroupFileAddon02">Upload</span>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -184,7 +195,7 @@
                         </td>
                         <td>
                             <button class="btn btn-sm btn-success btn-article-update" articleId=" @item.id.ToString()">编辑</button>
-                            <button class="btn btn-sm btn-danger btn-article-delete" id="btn-article-delete" articleId=" @item.id.ToString()">删除</button>
+                            <button class="btn btn-sm btn-danger btn-article-delete" articleId=" @item.id.ToString()">删除</button>
                         </td>
                         <td>
                             <input type='checkbox' class='check_item' />
@@ -206,20 +217,19 @@
 </div>
 <script src="~/Scripts/jquery1111.min.js"></script>
 <script type="text/javascript">
-        //查询部门信息
-    function GetCates(ele){
+    //查询部门信息
+    function GetCates(ele) {
         //对下拉框进行清空
         $(ele).empty();
         $.ajax({
             url: "../Dashboard/GetCates",
-            //dataType: "json/",
             contentType: "application/json;charset=utf-8",
-            success : function(result) {
+            success: function (result) {
                 //对数据进行拼接，填充到select中
-                $.each(result, function(index,cate) {
+                $.each(result, function (index, cate) {
                     var optionEle = $("<option></option>").append(
                         cate.cateName.trim()).attr("value",
-                        cate.id);
+                            cate.id);
                     optionEle.appendTo($(ele));
                 });
             }
@@ -228,36 +238,54 @@
 
 
     //点击编辑按钮，弹出模态框，对员工进行修改操作
-    $(document).on("click",".btn-article-update",function() {
+    $(document).on("click", ".btn-article-update", function () {
         //查出部门信息
         GetCates("#article_update_modal select");
         //点击编辑按钮，需要对员工信息进行回显
         GetArticleInfo($(this).attr("articleId"));
-        //把员工id传给更新按钮
-       // $("#article_update_btn").attr("empId",$(this).attr("editId"));
+        //把文章id传给更新按钮
+        $("#article_update_btn").attr("articleId",$(this).attr("articleId"));
         $("#article_update_modal").modal({
-                backdrop: "static"
-            });
+            backdrop: "static"
+        });
     });
 
 
-     //查询员工信息
-    function GetArticleInfo(id){
+    //查询员工信息
+    function GetArticleInfo(id) {
         //发起ajax请求
         $.ajax({
-            url:"../Dashboard/GetArticleInfo?id="+id,
+            url: "../Dashboard/GetArticleInfo?id=" + id,
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            success:function(result) {
+            success: function (data) {
                 //将查到的员工信息显示在模态框上
-                var article = result;
-                $("#article_update_input").val(article.title);
-                $("#link_update_input").val(article.email);
+                var article = data[0];
+                // alert(article.id);
+                $("#title_update_input").val(article.title);
+                $("#link_update_input").val(article.link);
                 $("#date_update_input").val(article.date);
                 $("#author_update_input").val(article.author);
+                $("#desc_update_text").val(article.description);
             }
         });
     }
+
+     //点击更新按钮，对文章信息进行更新
+    $("#article_update_btn").click(function() {
+   
+        //发送ajax请求更新文章
+        $.ajax({
+            url:"../dashboard/Edit/"+$(this).attr("articleId"),
+            type:"POST",
+            data:$("#article_update_modal form").serialize(),
+            success:function(result){
+                //修改成功以后关闭模态框，跳转到对应的页面
+                $("#article_update_modal").modal("hide");
+                //to_page(currentPage);
+            }
+        });
+    });
 
 </script>
 <script type="text/javascript">
@@ -325,17 +353,17 @@
     });
 
 
-    
+
     //点击删除按钮，根据id删除单个文章
-    $(document).on("click",".btn-article-delete",function() {
+    $(document).on("click", ".btn-article-delete", function () {
         var artcleId = $(this).attr("articleId");
         //发送确认框，是否删除员工
-        if(confirm("是否删除["+artcleId+"]?")) {
+        if (confirm("是否删除[" + artcleId + "]?")) {
             //确认删除后发送ajax请求
             $.ajax({
                 url: "../Dashboard/Delete?Ids=" + artcleId,
-                type:"POST",
-                success:function(result) {
+                type: "POST",
+                success: function (result) {
                     alert("删除成功!");
                 }
             });

@@ -88,8 +88,10 @@ namespace MyNewBlog.Controllers
             var article = from a in db.Article
                            where a.id == id
                            select a;
-
-            return Json(article, JsonRequestBehavior.AllowGet);
+            var json = new JsonResult();
+            json.JsonRequestBehavior = JsonRequestBehavior.AllowGet;
+            json.Data = article.ToList();
+            return json;
         }
 
         //GET: Dashboard/UserDetails
@@ -155,27 +157,13 @@ namespace MyNewBlog.Controllers
         }
 
      
-        // GET: Dashboard/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Article article = await db.Article.FindAsync(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
-        }
 
         // POST: Dashboard/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "id,title,description,link,date,author,categoryId,language,imageUrl")] Article article)
+        public async Task<ActionResult> Edit(Article article)
         {
             if (ModelState.IsValid)
             {
