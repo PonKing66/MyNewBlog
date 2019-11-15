@@ -90,84 +90,15 @@
 
 </div>
 <script src="~/Scripts/jquery1111.min.js"></script>
+
+<script type="text/javascript">
+    //查询部门信息
+
+</script>
+
 <script type="text/javascript">
 
 
 
-    //给批量删除按钮添加点击事件
-    $("#Test_btn").click(function () {
-        //获取当前被选中的员工的id和姓名
-        $.post();
-        //确认删除发送ajax请求
-        $.ajax({
-            url: "../Test",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            data: "{'Name':'郎中令','Content':'200'}",
-
-            success: function (result) {
-                alert("success" + result);
-            },
-            error: function (result) {
-                alert("發送失敗" + result);
-            }
-        });
-
-    });
-
-    $("#delete_all_btn").click(function () {
-        //获取当前被选中的员工的id和姓名
-        var articleIds = "";
-        $.each($(".check_item:checked"), function () {
-            articleIds += $(this).parents("tr").find("td:eq(0)").text().trim() + "-";
-        });
-        if (confirm("确认要删除[" + articleIds + "]?")) {
-            //确认删除发送ajax请求
-            $.ajax({
-                url: "../Dashboard/Delete/",
-                type: "DELETE",
-                dataType: "json",
-                contentType: "application/json",
-                data: { "ids": articleIds },
-                success: function (result) {
-                    alert("success" + result);
-                },
-                error: function (result) {
-                    alert("error" + result);
-                }
-
-            })
-        }
-    });
-
-
-
-    function to_page(pn) {
-        $.ajax({
-            url: "../Dashboard/",
-            // data : "pn=" + pn,
-            type: "GET",
-            success: function (result) {
-                //跳转之后清除全选框的数据
-                $("#check_all").prop("checked", false);
-            }
-        });
-    }
-
-
-    //给全选框添加点击事件
-    $("#check_all").click(function () {
-        $(".check_item").prop("checked", $(this).prop("checked"));
-    });
-
-    //给单个的checkbox添加点击事件，从而使全选框和checkbox们保持相同的状态
-    $(document).on("click", ".check_item", function () {
-        var flag = $(".check_item").length == $(".check_item:checked").length;
-        if (flag) {
-            $("#check_all").prop("checked", true);
-        } else {
-            $("#check_all").prop("checked", false);
-        }
-    });
 
 </script>

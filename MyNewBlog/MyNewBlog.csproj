@@ -169,7 +169,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
-    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -244,34 +243,13 @@
     <Content Include="Content\signin.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\zerogrid.css" />
-    <Content Include="images\header\top.jpg" />
-    <Content Include="images\header\top_1.jpg" />
-    <Content Include="WebServiceDash.asmx" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\css\font-awesome.css" />
-    <Content Include="fonts\css\font-awesome.min.css" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <Content Include="images\25.jpg" />
-    <Content Include="images\blog2.jpg" />
-    <Content Include="images\blog3.jpg" />
-    <Content Include="images\blog4.jpg" />
     <Content Include="images\header\0.jpg" />
     <Content Include="images\header\1.jpg" />
     <Content Include="images\header\2.jpg" />
     <Content Include="images\header\3.jpg" />
     <Content Include="images\header\4.jpg" />
-    <Content Include="images\image19.jpg" />
-    <Content Include="images\image20.jpg" />
-    <Content Include="images\image21.jpg" />
-    <Content Include="images\image22.jpg" />
-    <Content Include="images\image23.jpg" />
-    <Content Include="images\image24.jpg" />
-    <Content Include="images\image25.jpg" />
-    <Content Include="images\image26.jpg" />
-    <Content Include="images\image27.jpg" />
-    <Content Include="images\image28.jpg" />
+    <Content Include="images\header\top.jpg" />
+    <Content Include="images\header\top_1.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\map-marker.png" />
     <Content Include="images\newsImages\1.jpg" />
@@ -283,7 +261,13 @@
     <Content Include="images\newsImages\7.jpg" />
     <Content Include="images\newsImages\8.jpg" />
     <Content Include="images\newsImages\9.jpg" />
-    <Content Include="images\news\news_1.jpg" />
+    <Content Include="WebServiceDash.asmx" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\css\font-awesome.css" />
+    <Content Include="fonts\css\font-awesome.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
     <Content Include="Models\NewsInformation.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NewsInformation.Context.cs</LastGenOutput>
@@ -349,11 +333,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
-    <Content Include="Views\Comments\Create.cshtml" />
-    <Content Include="Views\Comments\Delete.cshtml" />
-    <Content Include="Views\Comments\Details.cshtml" />
-    <Content Include="Views\Comments\Edit.cshtml" />
-    <Content Include="Views\Comments\Index.cshtml" />
     <Content Include="Views\Replies\Create.cshtml" />
     <Content Include="Views\Replies\Delete.cshtml" />
     <Content Include="Views\Replies\Details.cshtml" />
@@ -376,8 +355,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Demo\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -63,7 +63,34 @@ namespace MyNewBlog.Controllers
         //    return View(articles.ToPagedList(pageNumber, pageSize));
         //}
 
+        // GET: Dashboard
+        public ActionResult Index()
+        {
+            return View();
+        }
 
+
+        //GET: Cates 模态框获取分类
+        [HttpGet]
+        public JsonResult GetCates()
+        {
+            var cates = from c in db.Category
+                        select c;
+
+            return Json(cates,JsonRequestBehavior.AllowGet);
+        }
+
+
+        //GET: Cates 模态框获取分类
+        [HttpGet]
+        public JsonResult GetArticleInfo(int id)
+        {
+            var article = from a in db.Article
+                           where a.id == id
+                           select a;
+
+            return Json(article, JsonRequestBehavior.AllowGet);
+        }
 
         //GET: Dashboard/UserDetails
         public ActionResult UserDetails(int? page)
@@ -127,50 +154,7 @@ namespace MyNewBlog.Controllers
             return View();
         }
 
-        // GET: Dashboard
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Dashboard/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Article article = await db.Article.FindAsync(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
-        }
-
-        // GET: Dashboard/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Dashboard/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,title,description,link,date,author,categoryId,language,imageUrl")] Article article)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Article.Add(article);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-
-            return View(article);
-        }
-
+     
         // GET: Dashboard/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
@@ -217,21 +201,8 @@ namespace MyNewBlog.Controllers
             return View(article);
         }
 
-        //// POST: Dashboard/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> DeleteConfirmed(int id)
-        //{
-        //    Article article = await db.Article.FindAsync(id);
-        //    db.Article.Remove(article);
-        //    await db.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
 
-
-
-        [HttpPost]
-        
+        [HttpPost]  
         public JsonResult Delete(string Ids)
         {
             System.Diagnostics.Debug.Write(Ids);
