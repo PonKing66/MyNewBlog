@@ -366,10 +366,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
-    <Content Include="Views\Dashboard\Create.cshtml" />
-    <Content Include="Views\Dashboard\Delete.cshtml" />
-    <Content Include="Views\Dashboard\Details.cshtml" />
-    <Content Include="Views\Dashboard\Edit.cshtml" />
     <Content Include="Views\Home\Archives.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Dashboard\_DashLayout.cshtml" />

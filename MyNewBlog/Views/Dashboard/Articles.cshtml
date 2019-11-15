@@ -8,11 +8,65 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
+<!-- 添加员工模态框 -->
+<!-- Modal -->
+<div class="modal fade" id="article_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">标题</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">原链接</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">日期</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">作者</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label for="inputState">分类</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">内容</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-10">
-            <button class="btn btn-primary btn-sm" id="add_modal_btn">新增</button>
+            <button class="btn btn-primary btn-sm" id="article_add_modal_btn">新增</button>
             <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
 
         </div>
@@ -72,8 +126,8 @@
                             @ViewBag.cateNames[Convert.ToInt32(item.categoryId)]
                         </td>
                         <td>
-                            @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
-                            @Html.ActionLink("编辑", "Delete", new { id = item.id })
+                            <button class="btn btn-sm btn-success">编辑</button>
+                            <button class="btn btn-sm btn-danger" id="btn-article-delete">删除</button>
 
                         </td>
                         <td>
@@ -99,43 +153,26 @@
 
 
 
-    //给批量删除按钮添加点击事件
-    $("#Test_btn").click(function () {
-        //获取当前被选中的员工的id和姓名
-        $.post();
-        //确认删除发送ajax请求
-        $.ajax({
-            url: "../Test",
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            data: "{'Name':'郎中令','Content':'200'}",
-
-            success: function (result) {
-                alert("success" + result);
-            },
-            error: function (result) {
-                alert("發送失敗" + result);
-            }
-        });
-
-    });
 
     $("#delete_all_btn").click(function () {
-        //获取当前被选中的员工的id和姓名
+        //获取当前被选中的文章的id
         var articleIds = "";
         $.each($(".check_item:checked"), function () {
             articleIds += $(this).parents("tr").find("td:eq(0)").text().trim() + "-";
         });
+        articleIds = articleIds.substring(0, articleIds.length - 1);
         if (confirm("确认要删除[" + articleIds + "]?")) {
             //确认删除发送ajax请求
             $.ajax({
-                url: "../Dashboard/Delete/",
-                type: "DELETE",
+                url: "../Dashboard/Delete?Ids=" + articleIds,
+                type: "POST",
                 dataType: "json",
                 contentType: "application/json",
-                data: { "ids": articleIds },
+                data: {},
                 success: function (result) {
                     alert("success" + result);
+                    to_page();
+                    to_page();
                 },
                 error: function (result) {
                     alert("error" + result);
@@ -147,12 +184,13 @@
 
 
 
-    function to_page(pn) {
+
+    function to_page() {
         $.ajax({
-            url: "../Dashboard/",
-            // data : "pn=" + pn,
+            url: "../Dashboard/Articles?page=1",
+            //data: {},
             type: "GET",
-            success: function (result) {
+            success: function () {
                 //跳转之后清除全选框的数据
                 $("#check_all").prop("checked", false);
             }
@@ -174,5 +212,36 @@
             $("#check_all").prop("checked", false);
         }
     });
+
+
+    
+    //点击删除按钮，根据id删除单个文章
+    $(document).on("click",".btn-article-delete",function() {
+        var artcleId = $(this).attr("artcleId");
+        //发送确认框，是否删除员工
+        if(confirm("是否删除["+artcleId+"]?")) {
+            //确认删除后发送ajax请求
+            $.ajax({
+                url: "../Dashboard/Delete?Ids=" + artcleId,
+                type:"POST",
+                success:function(result) {
+                    alert(result.message);
+                }
+            });
+        }
+    });
+
+
+    //点击新增按钮，弹出一个模态框
+    $("#article_add_modal_btn").click(
+        function () {
+            //弹出模态框以后，重置表单数据和表单样式
+            //formReset("#article_add_modal form");
+            //点击按钮就发送一个ajax请求，查询全部部门信息
+            // getDepts("#article_add_modal select");
+            $("#article_add_modal").modal({
+                backdrop: "static"
+            });
+        });
 
 </script>

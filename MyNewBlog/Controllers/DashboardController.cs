@@ -62,6 +62,9 @@ namespace MyNewBlog.Controllers
         //    ViewBag.cateNames = cateNames;
         //    return View(articles.ToPagedList(pageNumber, pageSize));
         //}
+
+
+
         //GET: Dashboard/UserDetails
         public ActionResult UserDetails(int? page)
         {
@@ -214,15 +217,52 @@ namespace MyNewBlog.Controllers
             return View(article);
         }
 
-        // POST: Dashboard/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+        //// POST: Dashboard/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> DeleteConfirmed(int id)
+        //{
+        //    Article article = await db.Article.FindAsync(id);
+        //    db.Article.Remove(article);
+        //    await db.SaveChangesAsync();
+        //    return RedirectToAction("Index");
+        //}
+
+
+
+        [HttpPost]
+        
+        public JsonResult Delete(string Ids)
         {
-            Article article = await db.Article.FindAsync(id);
-            db.Article.Remove(article);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
+            System.Diagnostics.Debug.Write(Ids);
+            if (Ids == null || Ids == "")
+            {
+                return Json("null value");
+            }
+
+            if (!Ids.Contains("-"))
+            {
+                int id = Convert.ToInt32(Ids);
+                Article article = db.Article.Find(id);
+                if (article == null)
+                {
+                    return Json("not exit ids");
+                }
+                db.Article.Remove(article);
+                db.SaveChanges();
+            }
+            else
+            {
+                string[] idstr = Ids.Split('-');
+                foreach (string str in idstr)
+                {
+                    int id = Convert.ToInt32(str);
+                    Article article = db.Article.Find(id);
+                    db.Article.Remove(article);
+                    db.SaveChanges();
+                }
+            }
+            return Json(true);
         }
 
         protected override void Dispose(bool disposing)
