@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Dashboard/_DashLayout.cshtml";
+    Layout = "~/Views/Admin/_DashLayout.cshtml";
     ViewBag.item = "article";
 }
 
@@ -77,37 +77,44 @@
             </div>
             <div class="modal-body">
                 <form>
+
+                    <div class="form-group" hidden="hidden">
+                        <label for="exampleFormControlInput1">标题</label>
+                        <input name="id" type="text" class="form-control" id="id_update_input" value="" placeholder="Title">
+                    </div>
+
                     <div class="form-group">
                         <label for="exampleFormControlInput1">标题</label>
-                        <input type="text" class="form-control" id="title_update_input" value="" placeholder="Title">
+                        <input name="title" type="text" class="form-control" id="title_update_input" value="" placeholder="Title">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">原链接</label>
-                        <input type="text" class="form-control" id="link_update_input" placeholder="Link">
+                        <input name="link" type="text" class="form-control" id="link_update_input" placeholder="Link">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">日期</label>
-                        <input type="text" class="form-control" id="date_update_input" placeholder="Date">
+                        <input name="date" type="text" class="form-control" id="date_update_input" placeholder="Date">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlInput1">作者</label>
-                        <input type="text" class="form-control" id="author_update_input" placeholder="Author">
+                        <input name="author" type="text" class="form-control" id="author_update_input" placeholder="Author">
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="inputState">分类</label>
-                        <select id="inputState_update" class="form-control">
+                        <select name="categoryId" id="select_categoryId" class="form-control">
                             @*<option selected>Choose...</option>
                                 <option>...</option>*@
+                            
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">内容</label>
-                        <textarea class="form-control" id="desc_update_text" rows="3"></textarea>
+                        <textarea name="description" class="form-control" id="desc_update_text" rows="3"></textarea>
                     </div>
                 </form>
             </div>
@@ -172,35 +179,35 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @item.id.ToString()
-                        </td>
+                <tr>
+                    <td>
+                        @item.id.ToString()
+                    </td>
 
-                        <td>
-                            @item.title.ToString().Trim()
-                        </td>
+                    <td>
+                        @item.title.ToString().Trim()
+                    </td>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.link)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.author)
-                        </td>
-                        <td>
-                            @ViewBag.cateNames[Convert.ToInt32(item.categoryId)]
-                        </td>
-                        <td>
-                            <button class="btn btn-sm btn-success btn-article-update" articleId=" @item.id.ToString()">编辑</button>
-                            <button class="btn btn-sm btn-danger btn-article-delete" articleId=" @item.id.ToString()">删除</button>
-                        </td>
-                        <td>
-                            <input type='checkbox' class='check_item' />
-                        </td>
-                    </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.link)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.author)
+                    </td>
+                    <td>
+                        @ViewBag.cateNames[Convert.ToInt32(item.categoryId)]
+                    </td>
+                    <td>
+                        <button class="btn btn-sm btn-success btn-article-update" articleId=" @item.id.ToString()">编辑</button>
+                        <button class="btn btn-sm btn-danger btn-article-delete" articleId=" @item.id.ToString()">删除</button>
+                    </td>
+                    <td>
+                        <input type='checkbox' class='check_item' />
+                    </td>
+                </tr>
                 }
 
             </tbody>
@@ -215,21 +222,30 @@
     </div>
 
 </div>
-<script src="~/Scripts/jquery1111.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.js"></script>
 <script type="text/javascript">
     //查询部门信息
-    function GetCates(ele) {
+    function GetCates(ele,categoryId) {
         //对下拉框进行清空
+        if (categoryId == null)
+            categoryId = 0;
         $(ele).empty();
         $.ajax({
-            url: "../Dashboard/GetCates",
+            url: "../Admin/GetCates",
             contentType: "application/json;charset=utf-8",
             success: function (result) {
                 //对数据进行拼接，填充到select中
                 $.each(result, function (index, cate) {
-                    var optionEle = $("<option></option>").append(
+                    if (categoryId == index) {
+                        var optionEle = $("<option selected></option>").append(
+                            cate.cateName.trim()).attr("value",
+                                cate.id);
+                    } else {
+                        var optionEle = $("<option></option>").append(
                         cate.cateName.trim()).attr("value",
                             cate.id);
+                    }
+                    
                     optionEle.appendTo($(ele));
                 });
             }
@@ -239,12 +255,11 @@
 
     //点击编辑按钮，弹出模态框，对员工进行修改操作
     $(document).on("click", ".btn-article-update", function () {
-        //查出部门信息
-        GetCates("#article_update_modal select");
+        
         //点击编辑按钮，需要对员工信息进行回显
         GetArticleInfo($(this).attr("articleId"));
         //把文章id传给更新按钮
-        $("#article_update_btn").attr("articleId",$(this).attr("articleId"));
+        $("#article_update_btn").attr("articleId", $(this).attr("articleId"));
         $("#article_update_modal").modal({
             backdrop: "static"
         });
@@ -255,37 +270,58 @@
     function GetArticleInfo(id) {
         //发起ajax请求
         $.ajax({
-            url: "../Dashboard/GetArticleInfo?id=" + id,
+            url: "../Admin/GetArticleInfo?id=" + id,
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (data) {
                 //将查到的员工信息显示在模态框上
                 var article = data[0];
                 // alert(article.id);
-                $("#title_update_input").val(article.title);
+                $("#id_update_input").val(article.id);
+                $("#title_update_input").val(article.title.trim());
                 $("#link_update_input").val(article.link);
-                $("#date_update_input").val(article.date);
+                $("#date_update_input").val(GetDateFormat(article.date));
                 $("#author_update_input").val(article.author);
                 $("#desc_update_text").val(article.description);
+                //查出部门信息
+                GetCates("#article_update_modal select", article.categoryId);
             }
         });
     }
 
-     //点击更新按钮，对文章信息进行更新
-    $("#article_update_btn").click(function() {
-   
+    function GetDateFormat(str) {
+        return new Date(parseInt(str.substr(6, 13))).toLocaleDateString();
+    }
+
+    // //点击更新按钮，对文章信息进行更新
+    $("#article_update_btn").click(function () {
+
+        //var id = document.getElementById("id_update_input").value;
+        //var title = document.getElementById("title_update_input").value;
+        //var link = document.getElementById("link_update_input").value;
+        //var date = document.getElementById("date_update_input").value;
+        //var author = document.getElementById("author_update_input").value;
+        //var desc = document.getElementById("desc_update_text").value;
+        
+ 
         //发送ajax请求更新文章
         $.ajax({
-            url:"../dashboard/Edit/"+$(this).attr("articleId"),
-            type:"POST",
-            data:$("#article_update_modal form").serialize(),
-            success:function(result){
+            url: "../Admin/Edit",
+            type: "POST",
+            //contentType: "application/json;charset=utf-8",
+            //dataType: "json",
+            data: $("#article_update_modal form").serialize(),
+            success: function () {
                 //修改成功以后关闭模态框，跳转到对应的页面
                 $("#article_update_modal").modal("hide");
-                //to_page(currentPage);
+                alert("更新成功!");
+            },
+            error: function (result) {
+                  alert("更新失败!");
             }
         });
     });
+
 
 </script>
 <script type="text/javascript">
@@ -303,14 +339,13 @@
         if (confirm("确认要删除[" + articleIds + "]?")) {
             //确认删除发送ajax请求
             $.ajax({
-                url: "../Dashboard/Delete?Ids=" + articleIds,
+                url: "../Admin/Delete?Ids=" + articleIds,
                 type: "POST",
                 dataType: "json",
                 contentType: "application/json",
                 data: {},
                 success: function (result) {
                     alert("success" + result);
-                    to_page();
                     to_page();
                 },
                 error: function (result) {
@@ -326,7 +361,7 @@
 
     function to_page() {
         $.ajax({
-            url: "../Dashboard/Articles?page=1",
+            url: "../Admin/Articles?page=1",
             //data: {},
             type: "GET",
             success: function () {
@@ -361,7 +396,7 @@
         if (confirm("是否删除[" + artcleId + "]?")) {
             //确认删除后发送ajax请求
             $.ajax({
-                url: "../Dashboard/Delete?Ids=" + artcleId,
+                url: "../Admin/Delete?Ids=" + artcleId,
                 type: "POST",
                 success: function (result) {
                     alert("删除成功!");
@@ -377,7 +412,7 @@
             //弹出模态框以后，重置表单数据和表单样式
             //formReset("#article_add_modal form");
             //点击按钮就发送一个ajax请求，查询全部部门信息
-            GetCates("#article_add_modal select");
+            GetCates("#article_add_modal select",null);
             $("#article_add_modal").modal({
                 backdrop: "static"
             });

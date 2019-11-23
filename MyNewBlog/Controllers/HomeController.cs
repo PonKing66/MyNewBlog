@@ -18,7 +18,7 @@ namespace MyNewBlog.Controllers
         //GET:Archives
         public ActionResult Archives(int? categoryId, int? page)
         {
-            int pageSize = 5;
+            int pageSize = 8;
 
             if (page == 0)
             {

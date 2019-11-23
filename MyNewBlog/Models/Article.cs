@@ -24,6 +24,33 @@ namespace MyNewBlog.Models
         public string language { get; set; }
         public string imageUrl { get; set; }
 
-        public Category category { get;set; }
+        public Article()
+        {
+        }
+
+        public Article(int  id, string title, string description, string link, DateTime? date, string author)
+        {
+            this.id = id;
+            this.title = title;
+            this.description = description;
+            this.link = link;
+            this.date = date;
+            this.author = author;
+        }
+
+        public Article( string title, string description, string link, DateTime? date, string author)
+        {
+
+            this.title = title;
+            this.description = description;
+            this.link = link;
+            this.date = date;
+            this.author = author;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

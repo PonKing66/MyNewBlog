@@ -13,7 +13,7 @@ namespace MyNewBlog
                         "~/Scripts/holder.js",
                         "~/Scripts/script.js",
                         "~/Scripts/css3-mediaqueries.js",
-                        "~/Scripts/jquery1111.min.js"));
+                        "~/Scripts/jquery-3.3.1.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

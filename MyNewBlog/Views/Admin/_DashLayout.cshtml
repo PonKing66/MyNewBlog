@@ -50,7 +50,6 @@
         /* Chart.js */
         -webkit-keyframes chartjs-render-animation {
             from
-
         {
             opacity: 0.99
         }
@@ -73,6 +72,7 @@
         }
 
         }
+        
 
         .chartjs-render-monitor {
             -webkit-animation: chartjs-render-animation 0.001s;
@@ -105,7 +105,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link @(ViewBag.item=="index"?"active":"")" href="~/DashBoard/Index">
+                            <a class="nav-link @(ViewBag.item=="index"?"active":"")" href="~/Admin/Index">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" class="feather feather-home">
@@ -116,7 +116,7 @@
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link @(ViewBag.item=="article"?"active":"")" href="~/DashBoard/Articles">
+                            <a class="nav-link @(ViewBag.item=="article"?"active":"")" href="~/Admin/Articles">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" class="feather feather-file">
@@ -127,7 +127,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(ViewBag.item=="users"?"active":"")" href="~/DashBoard/Users">
+                            <a class="nav-link @(ViewBag.item=="users"?"active":"")" href="~/Admin/Users">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" class="feather feather-shopping-cart">
@@ -139,7 +139,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(ViewBag.item=="links"?"active":"")" href="~/DashBoard/Links">
+                            <a class="nav-link @(ViewBag.item=="links"?"active":"")" href="~/Admin/Links">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                      stroke-linejoin="round" class="feather feather-users">
@@ -229,7 +229,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <script src="~/Content/js/dashboard.js"></script>
-    <script src="~/Scripts/jquery1111.min.js"></script>
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Content/bootstrap-4.3.1-dist/js/bootstrap.js"></script>
     <script src="~/Content/bootstrap-4.3.1-dist/js/bootstrap.min.js"></script>

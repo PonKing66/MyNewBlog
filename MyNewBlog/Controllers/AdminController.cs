@@ -7,10 +7,11 @@ using System.Net;
 using System.Web.Mvc;
 using MyNewBlog.Models;
 using PagedList;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyNewBlog.Controllers
 {
-    public class DashboardController : Controller
+    public class AdminController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
 
@@ -125,7 +126,7 @@ namespace MyNewBlog.Controllers
         //GET: Dashboard/Articles
         public ActionResult Articles(int? page)
         {
-            int pageSize = 10;
+            int pageSize = 20;
 
             if (page == 0)
             {
@@ -144,7 +145,7 @@ namespace MyNewBlog.Controllers
         //GET: Dashboard/Articles
         public ActionResult Links(int? page)
         {
-            int pageSize = 10;
+            int pageSize = 20;
 
             if (page == 0)
             {
@@ -156,41 +157,50 @@ namespace MyNewBlog.Controllers
             return View();
         }
 
-     
+
 
         // POST: Dashboard/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Article article)
+        [ValidateInput(false)]
+        public ActionResult Edit(Article article)
         {
+            //int id,string title,string link,DateTime date,string description,string author
+
+            System.Diagnostics.Debug.Write(article.author);
             if (ModelState.IsValid)
             {
                 db.Entry(article).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                db.SaveChanges();
+                //return RedirectToAction("Index");
             }
-            return View(article);
+            return RedirectToAction("/Articles");
         }
 
-        // GET: Dashboard/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+
+
+        //添加文章
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Add(Article article)
         {
-            if (id == null)
+            //int id,string title,string link,DateTime date,string description,string author
+
+            if (ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                db.Article.Add(article);
+                db.SaveChanges();
             }
-            Article article = await db.Article.FindAsync(id);
-            if (article == null)
-            {
-                return HttpNotFound();
-            }
-            return View(article);
+            return RedirectToAction("Articles");
         }
 
 
-        [HttpPost]  
+
+
+
+        [HttpPost]
         public JsonResult Delete(string Ids)
         {
             System.Diagnostics.Debug.Write(Ids);

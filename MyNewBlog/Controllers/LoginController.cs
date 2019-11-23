@@ -15,22 +15,17 @@ namespace MyNewBlog.Controllers
         private NewsInformationEntities db = new NewsInformationEntities();
 
         // GET: Login
-  
-        [ValidateAntiForgeryToken]
-        public ActionResult Index([Bind(Include = "userName,userPassword")] User user)
+
+
+        public ActionResult Index()
         {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Test");
-            }
 
-            return View(user);
+            return View("Index");
         }
-
 
        
 
-
+     
 
         // GET: Login/Details/5
         public ActionResult Details(int? id)

@@ -317,3 +317,7 @@ F:\WorkSpace\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.csprojAssemblyReference.cac
 F:\WorkSpace\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.csproj.CopyComplete
 F:\WorkSpace\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.dll
 F:\WorkSpace\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.pdb
+F:\WorkSpace\MyNewBlog\MyNewBlog\bin\System.Net.Http.Formatting.dll
+F:\WorkSpace\MyNewBlog\MyNewBlog\bin\System.Web.Http.dll
+F:\WorkSpace\MyNewBlog\MyNewBlog\bin\System.Net.Http.Formatting.xml
+F:\WorkSpace\MyNewBlog\MyNewBlog\bin\System.Web.Http.xml

@@ -111,8 +111,8 @@ a.search-submit-button {background: #fff;border-bottom: 1px solid #eeeeee;border
 /* ---------------------------------------------------------------------------- */
 header {
     background: #131313;
-    background-image: url('../images/header/top_1.jpg');
-    background-size: auto 100%
+    background-image: url('../images/background_new.jpg');
+    width: 100%
 }
 
 a.site-branding {text-align: center;color: #888;height: auto;padding: 0;display: inline-block;}

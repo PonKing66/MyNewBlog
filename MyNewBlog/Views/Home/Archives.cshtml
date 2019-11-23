@@ -26,9 +26,6 @@
                             <img src="">
                         </div>
                         <div class="entry-content">
-                            <p>
-
-                            </p>
                             @Html.ActionLink("Read More", "Details", new { categoryId = ViewBag.categoryId, id = item.id })
                         </div>
                     </div>
@@ -37,7 +34,7 @@
 
         </div>
     </div>
-    <!--分页没搞点-->
+    <!--分页-->
     <div class="t-center">
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
