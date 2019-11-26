@@ -17,8 +17,9 @@ namespace MyNewBlog.Models
         public int id { get; set; }
         public string userName { get; set; }
         public string userPassword { get; set; }
+        public Nullable<int> imageHeader { get; set; }
+        public string userAccount { get; set; }
 
         public bool RememberMe { get; set; }
-        public Nullable<int> imageHeader { get; set; }
     }
 }

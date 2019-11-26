@@ -35,8 +35,6 @@ namespace MyNewBlog.Controllers
             return View(article);
         }
 
-
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

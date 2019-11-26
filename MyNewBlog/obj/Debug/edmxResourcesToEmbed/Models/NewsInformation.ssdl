@@ -68,6 +68,7 @@
     <Property Name="userName" Type="varchar" MaxLength="50" />
     <Property Name="userPassword" Type="varchar" MaxLength="50" />
     <Property Name="imageHeader" Type="int" />
+    <Property Name="userAccount" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="NewsInformationModelStoreContainer">
     <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />

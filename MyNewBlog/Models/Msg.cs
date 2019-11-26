@@ -5,10 +5,10 @@ using System.Web;
 
 namespace MyNewBlog.Models
 {
-    public class Student
+    public class Msg
     {
-        public int id { get; set; }
-        public string name { get; set; }
+        public Object obj { get; set; }
+        public int state { get; set; }
         public string address { get; set; }
     }
 }

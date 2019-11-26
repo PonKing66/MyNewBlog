@@ -15,112 +15,57 @@ namespace MyNewBlog.Controllers
         private NewsInformationEntities db = new NewsInformationEntities();
 
         // GET: Login
-
-
         public ActionResult Index()
         {
 
-            return View("Index");
+            return View("Login");
         }
 
-       
-
-     
-
-        // GET: Login/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // GET: Login/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Login/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,userName,userPassword,imageHeader")] User user)
+        public ActionResult Index(User user)
         {
-            if (ModelState.IsValid)
+            
+            //查询是否存在该账户
+            var result = from ur in db.User
+                         where ur.userAccount == user.userAccount
+                         select ur;
+            if (result.Count() == 0)
             {
-                db.User.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("Error");
             }
+            User u = db.User.Find(result.First().id);
 
-            return View(user);
+            if (u.userAccount == user.userAccount)
+            {
+                CreateCookie(user.userPassword,user.userAccount);
+                return Redirect("~/admin/Index");
+            }
+            else
+            {
+                return View("Login");
+            }
         }
 
-        // GET: Login/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
 
-        // POST: Login/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,userName,userPassword,imageHeader")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(user);
-        }
 
-        // GET: Login/Delete/5
-        public ActionResult Delete(int? id)
+        #region 将用户名存到cookie中
+        /// <summary>
+        /// 保存Cookie
+        /// </summary>
+        /// <returns></returns>
+        public void CreateCookie(string userPwd,string userAccount)   //此Action自动往cookie里写入登录信息
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.User.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+            System.Diagnostics.Debug.WriteLine(userPwd);
+            System.Diagnostics.Debug.WriteLine(userAccount);
+            HttpCookie UserAccount = new HttpCookie("account");
+            UserAccount.Values["userAccount"] = userAccount;
+            UserAccount.Values["userPwd"] = userPwd;
+            System.Web.HttpContext.Current.Response.SetCookie(UserAccount);
+            //cookie保存时间
+            UserAccount.Expires = DateTime.Now.AddHours(10);
         }
+        #endregion
 
-        // POST: Login/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.User.Find(id);
-            db.User.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

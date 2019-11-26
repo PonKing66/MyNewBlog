@@ -73,6 +73,7 @@
           <Property Name="userName" Type="varchar" MaxLength="50" />
           <Property Name="userPassword" Type="varchar" MaxLength="50" />
           <Property Name="imageHeader" Type="int" />
+          <Property Name="userAccount" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="NewsInformationModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
@@ -164,6 +165,7 @@
           <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="imageHeader" Type="Int32" />
+          <Property Name="userAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -240,6 +242,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="NewsInformationModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="userAccount" ColumnName="userAccount" />
                 <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
                 <ScalarProperty Name="userPassword" ColumnName="userPassword" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
