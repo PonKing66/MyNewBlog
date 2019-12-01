@@ -19,7 +19,7 @@ namespace MyNewBlog.Models
         public string userPassword { get; set; }
         public Nullable<int> imageHeader { get; set; }
         public string userAccount { get; set; }
-
+        public int isAdmin { get; set; }
         public bool RememberMe { get; set; }
     }
 }

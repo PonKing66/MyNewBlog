@@ -15,6 +15,57 @@
 
     </div>
 </div>
+
+
+
+<div class="modal fade" id="article_add_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">添加文章</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">标题</label>
+                        <input type="text" name="title" class="form-control" id="title_add_input" value="" placeholder="Title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">原链接</label>
+                        <input type="text" name="link" class="form-control" id="link_add_input" placeholder="Link">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">日期</label>
+                        <input type="text" name="date" class="form-control" id="date_add_input" placeholder="Date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">作者</label>
+                        <input type="text" name="author" class="form-control" id="author_add_input" placeholder="Author">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">内容</label>
+                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="article_add_btn" name="article_add_btn" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
@@ -26,43 +77,47 @@
                     用户名
                 </th>
                 <th>
+                    账号
+                </th>
+                <th>
                     密码
                 </th>
                 <th>
                     操作
                 </th>
-                <th>
-                    全选/反选 <input type="checkbox" id="check_all" />
-                </th>
+
             </tr>
         </thead>
         <tbody>
             @foreach (var item in ViewBag.Users)
             {
-                <tr>
-                    <td>
-                        @item.id.ToString()
-                    </td>
+            <tr>
+                <td>
+                    @item.id.ToString()
+                </td>
 
-                    <td>
-                        @item.userName.ToString()
-                  
-                    </td>
+                <td>
+                    @item.userName.ToString()
 
-                    <td>
-                        @item.userPassword.ToString()
-                    </td>
+                </td>
 
-                    <td>
-                        @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
-                        @Html.ActionLink("删除", "Delete", new { id = item.id })
+                <td>
+                    @item.userAccount.ToString()
+
+                </td>
+
+                <td>
+                    @item.userPassword.ToString()
+                </td>
+
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.id })
 
 
-                    </td>
-                    <td>
-                        <input type='checkbox' class='check_item' />
-                    </td>
-                </tr>
+                </td>
+   
+            </tr>
             }
 
         </tbody>
@@ -74,3 +129,5 @@
     @Html.PagedListPager((IPagedList)(ViewBag.Users), page => Url.Action("Users",
         new { page }))
 </div>
+@RenderPage("~/Views/Admin/_FunctionScript.cshtml")
+

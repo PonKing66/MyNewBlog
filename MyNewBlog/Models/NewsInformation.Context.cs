@@ -28,7 +28,6 @@ namespace MyNewBlog.Models
         public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Link> Link { get; set; }
-        public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Comment> Comment { get; set; }
         public virtual DbSet<Reply> Reply { get; set; }
         public virtual DbSet<User> User { get; set; }

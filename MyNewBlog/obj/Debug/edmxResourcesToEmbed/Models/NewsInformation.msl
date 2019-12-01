@@ -34,15 +34,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Admin">
-      <EntityTypeMapping TypeName="NewsInformationModel.Admin">
-        <MappingFragment StoreEntitySet="Admin">
-          <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
-          <ScalarProperty Name="adminName" ColumnName="adminName" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Comment">
       <EntityTypeMapping TypeName="NewsInformationModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
@@ -70,6 +61,7 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="NewsInformationModel.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
           <ScalarProperty Name="userAccount" ColumnName="userAccount" />
           <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
           <ScalarProperty Name="userPassword" ColumnName="userPassword" />

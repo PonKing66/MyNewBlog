@@ -298,14 +298,6 @@
     // //点击更新按钮，对文章信息进行更新
     $("#article_update_btn").click(function () {
 
-        //var id = document.getElementById("id_update_input").value;
-        //var title = document.getElementById("title_update_input").value;
-        //var link = document.getElementById("link_update_input").value;
-        //var date = document.getElementById("date_update_input").value;
-        //var author = document.getElementById("author_update_input").value;
-        //var desc = document.getElementById("desc_update_text").value;
-        
- 
         //发送ajax请求更新文章
         $.ajax({
             url: "../Admin/Edit",
@@ -333,12 +325,10 @@
         $.ajax({
             url: "../Admin/add",
             type: "POST",
-            //contentType: "application/json;charset=utf-8",
-            //dataType: "json",
             data: $("#article_add_modal form").serialize(),
             success: function () {
                 //修改成功以后关闭模态框，跳转到对应的页面
-                $("#article_update_modal").modal("hide");
+                $("#article_add_modal").modal("hide");
                 alert("添加成功!");
             },
             error: function (result) {

@@ -1,13 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="NewsInformationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Admin">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="adminName" Type="nvarchar" MaxLength="50" />
-    <Property Name="adminPassword" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Article">
     <Key>
       <PropertyRef Name="id" />
@@ -69,9 +61,9 @@
     <Property Name="userPassword" Type="varchar" MaxLength="50" />
     <Property Name="imageHeader" Type="int" />
     <Property Name="userAccount" Type="varchar" MaxLength="50" />
+    <Property Name="isAdmin" Type="int" Nullable="false" />
   </EntityType>
   <EntityContainer Name="NewsInformationModelStoreContainer">
-    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />

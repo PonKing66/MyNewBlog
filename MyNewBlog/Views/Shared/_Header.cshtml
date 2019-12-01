@@ -1,0 +1,57 @@
+﻿<header class="main-header">
+    <div class="zerogrid">
+        <!--Top-->
+        <div id="top">
+            <div class="row">
+                <div class="col-2-3">
+                    <ul class="list-inline top-link link">
+
+                        @{
+                            //判断Cookie用户名密码是否存在
+
+                            HttpCookie cookieName = HttpContext.Current.Request.Cookies.Get("Account");
+                            if (cookieName != null)
+                            {
+                                <li><a href="~/Admin/Index"><h3 style="color:white">@cookieName.Values["userName"].ToString()</h3></a></li>
+                                <li><a href="~/login/Logout"><h3 style="color:white">注销</h3></a></li>
+                            }
+                            else
+                            {
+                                <li><a href="~/Login/Index"><h3 style="color:white">登录</h3></a></li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-1-3">
+                    <div class="top-search">
+                        <form id="form-container" action="" hidden="hidden">
+                            <!--<input type="submit" id="searchsubmit" value="" />-->
+                            <a class="search-submit-button" href="#">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <div id="searchtext">
+                                <input type="text" id="s" name="s" placeholder="Search">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="t-center">
+            <a class="site-branding" href="~/Home/Index">
+                <img src="~/images/logo1.png" />
+            </a>
+            <div id='cssmenu' class="align-center" style="color:black">
+                <ul>
+                    <li class="@(ViewBag.Title=="主页"?"active":"")">@Html.ActionLink("主页", "Index", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
+                    <li class="@(ViewBag.Title=="资讯"?"active":"")">@Html.ActionLink("资讯", "Archives", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
+                    <li class='@(ViewBag.Title=="关于我们"?"active":"")'>@Html.ActionLink("关于我们", "About", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+

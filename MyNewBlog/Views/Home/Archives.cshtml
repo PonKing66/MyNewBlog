@@ -1,13 +1,12 @@
 ﻿@model PagedList.IPagedList<MyNewBlog.Models.Article>
 @using PagedList.Mvc;
-<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "资讯";
 }
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 
-<section id="container">
     <div class="wrap-container">
         <div class="zerogrid">
             @foreach (var item in Model)
@@ -42,4 +41,4 @@
             new { categoryId = ViewBag.categoryId, page }))
     </div>
 
-</section>
+

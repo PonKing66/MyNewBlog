@@ -1,0 +1,224 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    //查询部门信息
+    function GetCates(ele,categoryId) {
+        //对下拉框进行清空
+        if (categoryId == null)
+            categoryId = 0;
+        $(ele).empty();
+        $.ajax({
+            url: "../Admin/GetCates",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                //对数据进行拼接，填充到select中
+                $.each(result, function (index, cate) {
+                    if (categoryId == index) {
+                        var optionEle = $("<option selected></option>").append(
+                            cate.cateName.trim()).attr("value",
+                                cate.id);
+                    } else {
+                        var optionEle = $("<option></option>").append(
+                        cate.cateName.trim()).attr("value",
+                            cate.id);
+                    }
+
+                    optionEle.appendTo($(ele));
+                });
+            }
+        });
+    }
+
+
+    //点击编辑按钮，弹出模态框，对员工进行修改操作
+    $(document).on("click", ".btn-article-update", function () {
+
+        //点击编辑按钮，需要对员工信息进行回显
+        GetArticleInfo($(this).attr("articleId"));
+        //把文章id传给更新按钮
+        $("#article_update_btn").attr("articleId", $(this).attr("articleId"));
+        $("#article_update_modal").modal({
+            backdrop: "static"
+        });
+    });
+
+
+
+
+    //查询员工信息
+    function GetArticleInfo(id) {
+        //发起ajax请求
+        $.ajax({
+            url: "../Admin/GetArticleInfo?id=" + id,
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //将查到的员工信息显示在模态框上
+                var article = data[0];
+                // alert(article.id);
+                $("#id_update_input").val(article.id);
+                $("#title_update_input").val(article.title.trim());
+                $("#link_update_input").val(article.link);
+                $("#date_update_input").val(GetDateFormat(article.date));
+                $("#author_update_input").val(article.author);
+                $("#desc_update_text").val(article.description);
+                //查出部门信息
+                GetCates("#article_update_modal select", article.categoryId);
+            }
+        });
+    }
+
+    function GetDateFormat(str) {
+        return new Date(parseInt(str.substr(6, 13))).toLocaleDateString();
+    }
+
+    // //点击更新按钮，对文章信息进行更新
+    $("#article_update_btn").click(function () {
+
+        //发送ajax请求更新文章
+        $.ajax({
+            url: "../Admin/Edit",
+            type: "POST",
+            //contentType: "application/json;charset=utf-8",
+            //dataType: "json",
+            data: $("#article_update_modal form").serialize(),
+            success: function () {
+                //修改成功以后关闭模态框，跳转到对应的页面
+                $("#article_update_modal").modal("hide");
+                alert("更新成功!");
+            },
+            error: function (result) {
+                  alert("更新失败!");
+            }
+        });
+    });
+
+
+
+     // //点击添加按钮，添加文章
+    $("#article_add_btn").click(function () {
+
+        //发送ajax请求
+        $.ajax({
+            url: "../Admin/add",
+            type: "POST",
+            data: $("#article_add_modal form").serialize(),
+            success: function () {
+                //修改成功以后关闭模态框，跳转到对应的页面
+                $("#article_add_modal").modal("hide");
+                alert("添加成功!");
+            },
+            error: function (result) {
+                  alert("添加失败!");
+            }
+        });
+    });
+
+</script>
+<script type="text/javascript">
+
+
+
+
+    $("#delete_all_btn").click(function () {
+        //获取当前被选中的文章的id
+        var articleIds = "";
+        $.each($(".check_item:checked"), function () {
+            articleIds += $(this).parents("tr").find("td:eq(0)").text().trim() + "-";
+        });
+        articleIds = articleIds.substring(0, articleIds.length - 1);
+        if (confirm("确认要删除[" + articleIds + "]?")) {
+            //确认删除发送ajax请求
+            $.ajax({
+                url: "../Admin/Delete?Ids=" + articleIds,
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                data: {},
+                success: function (result) {
+                    alert("success" + result);
+                    to_page();
+                },
+                error: function (result) {
+                    alert("error" + result);
+                }
+
+            })
+        }
+    });
+
+
+
+
+    function to_page() {
+        $.ajax({
+            url: "../Admin/Articles?page=1",
+            //data: {},
+            type: "GET",
+            success: function () {
+                //跳转之后清除全选框的数据
+                $("#check_all").prop("checked", false);
+            }
+        });
+    }
+
+
+    //给全选框添加点击事件
+    $("#check_all").click(function () {
+        $(".check_item").prop("checked", $(this).prop("checked"));
+    });
+
+    //给单个的checkbox添加点击事件，从而使全选框和checkbox们保持相同的状态
+    $(document).on("click", ".check_item", function () {
+        var flag = $(".check_item").length == $(".check_item:checked").length;
+        if (flag) {
+            $("#check_all").prop("checked", true);
+        } else {
+            $("#check_all").prop("checked", false);
+        }
+    });
+
+
+
+    //点击删除按钮，根据id删除单个文章
+    $(document).on("click", ".btn-article-delete", function () {
+        var artcleId = $(this).attr("articleId");
+        //发送确认框，是否删除员工
+        if (confirm("是否删除[" + artcleId + "]?")) {
+            //确认删除后发送ajax请求
+            $.ajax({
+                url: "../Admin/Delete?Ids=" + artcleId,
+                type: "POST",
+                success: function (result) {
+                    alert("删除成功!");
+                }
+            });
+        }
+    });
+
+
+    //点击新增按钮，弹出一个模态框
+    $("#article_add_modal_btn").click(
+        function () {
+            //弹出模态框以后，重置表单数据和表单样式
+            formReset("#article_add_modal form");
+            //点击按钮就发送一个ajax请求，查询全部部门信息
+            GetCates("#article_add_modal select",null);
+            $("#article_add_modal").modal({
+                backdrop: "static"
+            });
+        });
+
+
+     function formReset(ele) {
+        //清楚表单中的数据
+        $(ele)[0].reset();
+        //重置样式
+       // $(ele).find("*").removeClass("has-success has-error");
+        //$(ele).find(".help-block").text("");
+    }
+</script>

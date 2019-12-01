@@ -17,8 +17,9 @@ namespace MyNewBlog.App_Start
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             //判断Cookie用户名密码是否存在
-            HttpCookie cookieName = HttpContext.Current.Request.Cookies.Get("account");
-            if (cookieName == null || (cookieName.Values["userAccount"] != "admin" && cookieName.Values["userPwd"] != "123456"))
+            //HttpContext.Current.Request.ContentEncoding.
+            HttpCookie cookieName = HttpContext.Current.Request.Cookies.Get("Account");
+            if (cookieName == null || ( cookieName.Values["IsAdmin"] != "True"|| cookieName.Values["userAccount"]!="admin"))
             {
                 filterContext.Result = new RedirectResult("/Login/Index");
             }

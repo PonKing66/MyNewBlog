@@ -16,6 +16,7 @@ namespace MyNewBlog
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+           // System.Web.HttpContext.Current.Request.Cookies.Clear();
         }
     }
 }

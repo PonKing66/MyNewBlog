@@ -95,7 +95,7 @@ namespace MyNewBlog.Controllers
 
             var categories = from c in db.Category
                              select c;
-            String[] cateNames = {"","时政新闻","国际新闻","财经新闻","体育新闻"
+            String[] cateNames = {"未分类","时政新闻","国际新闻","财经新闻","体育新闻"
                     ,"教育新闻","游戏新闻","时尚新闻","科技新闻","传媒新闻" };
             ViewBag.cateNames = cateNames;
             return View(db.Article.ToList().ToPagedList(pageNumber, pageSize));

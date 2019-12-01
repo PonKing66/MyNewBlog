@@ -5,14 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="NewsInformationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="adminName" Type="nvarchar" MaxLength="50" />
-          <Property Name="adminPassword" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="id" />
@@ -74,9 +66,9 @@
           <Property Name="userPassword" Type="varchar" MaxLength="50" />
           <Property Name="imageHeader" Type="int" />
           <Property Name="userAccount" Type="varchar" MaxLength="50" />
+          <Property Name="isAdmin" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="NewsInformationModelStoreContainer">
-          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
@@ -122,19 +114,10 @@
           <EntitySet Name="Article" EntityType="Self.Article" />
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Link" EntityType="Self.Link" />
-          <EntitySet Name="Admin" EntityType="NewsInformationModel.Admin" />
           <EntitySet Name="Comment" EntityType="NewsInformationModel.Comment" />
           <EntitySet Name="Reply" EntityType="NewsInformationModel.Reply" />
           <EntitySet Name="User" EntityType="NewsInformationModel.User" />
         </EntityContainer>
-        <EntityType Name="Admin">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="adminName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="adminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Comment">
           <Key>
             <PropertyRef Name="id" />
@@ -166,6 +149,7 @@
           <Property Name="userPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="imageHeader" Type="Int32" />
           <Property Name="userAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isAdmin" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -206,15 +190,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Admin">
-            <EntityTypeMapping TypeName="NewsInformationModel.Admin">
-              <MappingFragment StoreEntitySet="Admin">
-                <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
-                <ScalarProperty Name="adminName" ColumnName="adminName" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Comment">
             <EntityTypeMapping TypeName="NewsInformationModel.Comment">
               <MappingFragment StoreEntitySet="Comment">
@@ -242,6 +217,7 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="NewsInformationModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
                 <ScalarProperty Name="userAccount" ColumnName="userAccount" />
                 <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
                 <ScalarProperty Name="userPassword" ColumnName="userPassword" />

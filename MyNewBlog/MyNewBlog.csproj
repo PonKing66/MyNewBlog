@@ -177,14 +177,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Models\PersonViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Admin.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs">
       <DependentUpon>NewsInformation.tt</DependentUpon>
@@ -245,6 +242,7 @@
     <Content Include="Content\signin.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\zerogrid.css" />
+    <Content Include="favicon.ico" />
     <Content Include="images\background.jpg" />
     <Content Include="images\background_new.jpg" />
     <Content Include="images\header\0.jpg" />
@@ -267,7 +265,6 @@
     <Content Include="images\newsImages\7.jpg" />
     <Content Include="images\newsImages\8.jpg" />
     <Content Include="images\newsImages\9.jpg" />
-    <Content Include="favicon.ico" />
     <Content Include="fonts\css\font-awesome.css" />
     <Content Include="fonts\css\font-awesome.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -334,16 +331,13 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Articles\Index.cshtml" />
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\Delete.cshtml" />
     <Content Include="Views\Login\Details.cshtml" />
     <Content Include="Views\Login\Edit.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Home\Archives.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Admin\_DashLayout.cshtml" />
@@ -352,6 +346,17 @@
     <Content Include="Views\Admin\Articles.cshtml" />
     <Content Include="Views\Admin\Links.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Admin\_Header.cshtml" />
+    <Content Include="Views\Admin\_Bottom.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Bottom.cshtml" />
+    <Content Include="Views\Admin\_FunctionScript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

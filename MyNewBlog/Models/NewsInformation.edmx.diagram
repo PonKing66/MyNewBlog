@@ -8,10 +8,9 @@
         <EntityTypeShape EntityType="NewsInformationModel.Article" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsInformationModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="NewsInformationModel.Link" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NewsInformationModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="NewsInformationModel.Comment" Width="1.5" PointX="5.75" PointY="3.75" />
-        <EntityTypeShape EntityType="NewsInformationModel.Reply" Width="1.5" PointX="8.5" PointY="3.875" />
-        <EntityTypeShape EntityType="NewsInformationModel.User" Width="1.5" PointX="10.625" PointY="5.125" />
+        <EntityTypeShape EntityType="NewsInformationModel.Reply" Width="1.5" PointX="5.875" PointY="0.875" />
+        <EntityTypeShape EntityType="NewsInformationModel.User" Width="1.5" PointX="8.5" PointY="3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

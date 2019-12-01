@@ -1,0 +1,32 @@
+﻿@using MyNewBlog.Models
+@{
+
+    NewsInformationEntities db = new NewsInformationEntities();
+    var links = from c in db.Link
+                select c;
+    var linkItems = links.ToList();
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<footer class="blockquote-footer navbar-inverse">
+    <div class="zerogrid wrap-footer">
+        <div class="row">
+            <div class="bottom-social center-block">
+                @{
+                    foreach (var item in linkItems)
+                    {
+                        <a href="@item.url" style="color:white"><i class="fa fa-facebook"></i>@item.title</a>
+                    }
+                }
+            </div>
+        </div>
+        <div class="copyright">
+            Copyright &copy;<p>&copy; @DateTime.Now.Year - Gafulungatie网站</p>
+        </div>
+    </div>
+
+</footer>
