@@ -8,7 +8,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <link rel="icon" href="../../favicon.ico">
 
     <title>Signin Template for Bootstrap</title>
@@ -46,6 +45,9 @@
 
                 @Html.CheckBoxFor(model => model.RememberMe)
                 @Html.LabelFor(model => model.RememberMe)
+
+
+                <a href="~/Login/create" class="glyphicon-text-color float-lg-right">注册</a>
                 <button class="btn btn-lg btn-primary btn-block" style="width:auto" type="submit">登录</button>
             </div>
 

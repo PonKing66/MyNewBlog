@@ -24,7 +24,7 @@ namespace MyNewBlog.Controllers
         [HttpPost]
         public ActionResult Index(User user)
         {
-            
+
             //查询是否存在该账户
             var result = from ur in db.User
                          where ur.userAccount == user.userAccount
@@ -41,7 +41,7 @@ namespace MyNewBlog.Controllers
                 CreateLogCookie(u);
                 if (user.userAccount == "admin")
                 {
-                    
+
                     return Redirect("~/admin/Index");
                 }
                 return Redirect("~/Home/Index");
@@ -50,6 +50,29 @@ namespace MyNewBlog.Controllers
             {
                 return View("Login");
             }
+        }
+
+        // GET: Users/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Users/Create
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "userName,userPassword,userAccount")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.User.Add(user);
+                db.SaveChanges();
+                return Redirect("~/Home/Index");
+            }
+
+            return View(user);
         }
 
         public ActionResult Logout()
@@ -67,15 +90,15 @@ namespace MyNewBlog.Controllers
         /// <returns></returns>
         public void CreateLogCookie(User user)   //此Action自动往cookie里写入登录信息
         {
- 
+
             System.Diagnostics.Debug.WriteLine(user.userName);
             HttpCookie UserAccount = new HttpCookie("Account");
-            
+
 
             UserAccount.Values["userAccount"] = user.userAccount;
-           // UserAccount.Values["userPwd"] = user.userPassword;
+            // UserAccount.Values["userPwd"] = user.userPassword;
             UserAccount.Values["userName"] = user.userName;
-            UserAccount.Values["IsAdmin"] = user.isAdmin==1?"True":"False";
+            UserAccount.Values["IsAdmin"] = user.isAdmin == 1 ? "True" : "False";
             System.Web.HttpContext.Current.Response.SetCookie(UserAccount);
             //cookie保存时间
             UserAccount.Expires = DateTime.Now.AddHours(0.5);

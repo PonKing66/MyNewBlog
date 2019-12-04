@@ -14,16 +14,18 @@
 <body>
     <!--header-->
     @RenderPage("~/Views/Shared/_Header.cshtml")
-   
+
     <!--body-->
     <section id="container" class="container">
         @RenderBody()
     </section>
 
-  
+
+   
     <!--bottom-->
 
     @RenderPage("~/Views/Shared/_Bottom.cshtml")
+
 
 
     @Scripts.Render("~/bundles/jquery")

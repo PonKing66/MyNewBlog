@@ -10,14 +10,18 @@
 namespace MyNewBlog.Models
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
         public int id { get; set; }
+        [StringLength(50, MinimumLength = 4)]
         public string userName { get; set; }
+        [StringLength(50, MinimumLength = 4)]
         public string userPassword { get; set; }
         public Nullable<int> imageHeader { get; set; }
+        [UserValidation]
+        [StringLength(50, MinimumLength = 4)]
         public string userAccount { get; set; }
         public int isAdmin { get; set; }
         public bool RememberMe { get; set; }

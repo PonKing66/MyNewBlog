@@ -77,6 +77,10 @@ html, body {width:100%; padding:0; margin:0;}
 body {font: 14px/25px Arial, Helvetica, sans-serif;font-family: 'Teko', sans-serif;background: #fff;color: #666;font-size: 19px;line-height: 1.6em;letter-spacing: .2px;}
 body .wrap-body{}
 
+body {
+    background-image: url('../images/memphis-mini.png');
+}
+
 /* ---------------------------------------------------------------------------- */
 /* ---------------------------------Top-Site----------------------------------- */
 /* ---------------------------------------------------------------------------- */
@@ -111,7 +115,7 @@ a.search-submit-button {background: #fff;border-bottom: 1px solid #eeeeee;border
 /* ---------------------------------------------------------------------------- */
 header {
     background: #131313;
-    background-image: url('../images/background_new.jpg');
+    background-image: url('../images/background.jpg');
     width: 100%
 }
 

@@ -1,0 +1,13 @@
+﻿@using MyNewBlog.Models;
+
+@{
+    var alert = TempData["Alert"] as Alert;
+}
+<div>
+    @if (alert != null)
+    {
+    <h1>@:错误:@alert.Type.ToString().ToLower()</h1>
+        <br />
+        @alert.Message
+    }
+</div>

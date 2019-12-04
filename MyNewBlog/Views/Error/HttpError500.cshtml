@@ -1,0 +1,16 @@
+@using MyNewBlog.Models;
+@{
+  var alert = TempData["Alert"] as Alert;
+}
+<div>
+    <h1 class="text-xl-center">·şÎñÆ÷·±Ã¦£¬ÇëÉÔºòÖØÊÔ!!!</h1>
+    <div class="text-danger" style="font-size:20px;">
+        @if (alert != null)
+        {
+            @:´íÎó:@alert.Type.ToString().ToLower()
+            <br />
+            @alert.Message
+        }
+    </div>
+
+</div>
