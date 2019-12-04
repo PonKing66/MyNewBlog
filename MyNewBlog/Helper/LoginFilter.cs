@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MyNewBlog.App_Start
 {
+    //管理权限
     //类和方法都使用时，加上这个特性，此时都其作用，不加，只方法起作用
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = true)]
     public class LoginFilterAttribute : ActionFilterAttribute

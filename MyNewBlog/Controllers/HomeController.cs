@@ -16,7 +16,7 @@ namespace MyNewBlog.Controllers
         private NewsInformationEntities db = new NewsInformationEntities();
 
         //GET:Archives
-        public ActionResult Archives(int? categoryId, int? page)
+        public ActionResult News(int? categoryId, int? page)
         {
             int pageSize = 12;
 

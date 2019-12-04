@@ -177,7 +177,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Helper\AuthorizeCheckAttribute.cs" />
     <Compile Include="Helper\CustomHandleErrorAttribute.cs" />
-    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -336,7 +335,7 @@
     <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Archives.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Admin\_DashLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />

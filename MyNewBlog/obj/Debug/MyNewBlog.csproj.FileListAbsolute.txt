@@ -553,7 +553,6 @@ C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\bin\zh-Hans\System.Web.Ra
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\bin\zh-Hans\System.Web.WebPages.resources.dll
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.csprojAssemblyReference.cache
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.csproj.CopyComplete
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.dll
 C:\Users\黄澎广\Desktop\newblog\MyNewBlog\MyNewBlog\obj\Debug\MyNewBlog.pdb

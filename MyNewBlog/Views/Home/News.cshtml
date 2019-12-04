@@ -37,7 +37,7 @@
     <div class="t-center">
         Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-        @Html.PagedListPager(Model, page => Url.Action("Archives",
+        @Html.PagedListPager(Model, page => Url.Action("News",
             new { categoryId = ViewBag.categoryId, page }))
     </div>
 

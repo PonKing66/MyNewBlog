@@ -46,7 +46,7 @@
             <div id='cssmenu' class="align-center" style="color:black">
                 <ul>
                     <li class="@(ViewBag.Title=="主页"?"active":"")">@Html.ActionLink("主页", "Index", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
-                    <li class="@(ViewBag.Title=="资讯"?"active":"")">@Html.ActionLink("资讯", "Archives", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
+                    <li class="@(ViewBag.Title=="资讯"?"active":"")">@Html.ActionLink("资讯", "News", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
                     <li class='@(ViewBag.Title=="关于我们"?"active":"")'>@Html.ActionLink("关于我们", "About", "Home",new { htmlAttributes = new { stytle = "color:black" }})</li>
                 </ul>
             </div>
