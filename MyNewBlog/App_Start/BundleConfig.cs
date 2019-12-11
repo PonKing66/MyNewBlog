@@ -42,6 +42,9 @@ namespace MyNewBlog
             bundles.Add(new StyleBundle("~/owl-carousel/css").Include(
                       "~/owl-carousel/owl-carousel.css"));
 
+            bundles.Add(new StyleBundle("~/Content/css/animate.css").Include(
+                   "~/Content/css/animate.css"));
+
             //自定义
 
         }

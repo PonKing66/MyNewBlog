@@ -6,16 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using MyNewBlog.Models;
 using PagedList;
 
 namespace MyNewBlog.Controllers
 {
+    //添加缓冲
+    [OutputCache(CacheProfile ="CacheFiveMin",Location = OutputCacheLocation.Client)]
     public class HomeController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
 
         //GET:Archives
+        
         public ActionResult News(int? categoryId, int? page)
         {
             int pageSize = 12;

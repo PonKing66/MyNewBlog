@@ -185,40 +185,40 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>NewsDao.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Alert.cs" />
     <Compile Include="Models\AlertType.cs" />
     <Compile Include="Models\Article.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Link.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewsInformation.Context.cs">
+    <Compile Include="Models\NewsDao.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewsInformation.Context.tt</DependentUpon>
+      <DependentUpon>NewsDao.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewsInformation.cs">
+    <Compile Include="Models\NewsDao.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NewsInformation.Designer.cs">
+    <Compile Include="Models\NewsDao.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NewsInformation.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Reply.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>NewsInformation.tt</DependentUpon>
+      <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -238,7 +238,9 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\dashboard.css" />
+    <Content Include="Content\css\me_stytle.css" />
     <Content Include="Content\dashboard.css" />
     <Content Include="Content\js\dashboard.js" />
     <Content Include="Content\menu.css" />
@@ -270,15 +272,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\NewsInformation.Context.tt">
+    <Content Include="images\wechat.jpg" />
+    <Content Include="Models\NewsDao.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NewsInformation.Context.cs</LastGenOutput>
-      <DependentUpon>NewsInformation.edmx</DependentUpon>
+      <DependentUpon>NewsDao.edmx</DependentUpon>
+      <LastGenOutput>NewsDao.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\NewsInformation.tt">
+    <Content Include="Models\NewsDao.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NewsInformation.edmx</DependentUpon>
-      <LastGenOutput>NewsInformation.cs</LastGenOutput>
+      <DependentUpon>NewsDao.edmx</DependentUpon>
+      <LastGenOutput>NewsDao.cs</LastGenOutput>
     </Content>
     <Content Include="owl-carousel\AjaxLoader.gif" />
     <Content Include="owl-carousel\grabbing.png" />
@@ -289,13 +292,6 @@
     <Content Include="owl-carousel\owl.transitions.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\NewsInformation.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NewsInformation.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\NewsInformation.edmx.diagram">
-      <DependentUpon>NewsInformation.edmx</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-4.3.1-dist\css\bootstrap-reboot.css.map" />
@@ -306,6 +302,13 @@
     <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.js.map" />
     <Content Include="Content\bootstrap-4.3.1-dist\js\bootstrap.min.js.map" />
+    <EntityDeploy Include="Models\NewsDao.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NewsDao.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\NewsDao.edmx.diagram">
+      <DependentUpon>NewsDao.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\css3-mediaqueries.js" />
     <Content Include="Scripts\holder.min.js" />
@@ -332,14 +335,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Login\Create.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Admin\_DashLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Users.cshtml" />
+    <Content Include="Views\Admin\Admins.cshtml" />
     <Content Include="Views\Admin\Articles.cshtml" />
     <Content Include="Views\Admin\Links.cshtml" />
     <Content Include="Views\Login\Error.cshtml" />

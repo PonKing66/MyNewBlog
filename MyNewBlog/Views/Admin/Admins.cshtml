@@ -1,0 +1,82 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@{
+    Layout = "~/Views/Admin/_DashLayout.cshtml";
+
+    ViewBag.item = "admins";
+
+}
+
+@Styles.Render("~/Content/Dash/css")
+<div class="row">
+    <div class="col-md-4 col-md-offset-10">
+        <button class="btn btn-primary btn-sm" id="add_modal_btn">新增</button>
+        <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
+
+    </div>
+</div>
+
+
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    用户名
+                </th>
+                <th>
+                    密码
+                </th>
+                <th>
+                    操作
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Admins)
+            {
+            <tr>
+                <td>
+                    @item.id.ToString()
+                </td>
+
+                <td>
+                    @item.adminName.ToString()
+
+                </td>
+
+                <td>
+                    @item.adminPassword.ToString()
+
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("删除", "Delete", new { id = item.id })
+
+
+                </td>
+   
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="t-center">
+
+    @Html.PagedListPager((IPagedList)(ViewBag.Admins), page => Url.Action("Admins",
+        new { page }))
+</div>
+@RenderPage("~/Views/Admin/_FunctionScript.cshtml")
+

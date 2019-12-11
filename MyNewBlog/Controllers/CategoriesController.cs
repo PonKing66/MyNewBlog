@@ -6,10 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using MyNewBlog.Models;
 
 namespace MyNewBlog.Controllers
 {
+    //添加缓冲
+    [OutputCache(CacheProfile = "CacheFiveMin", Location = OutputCacheLocation.Client)]
     public class CategoriesController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
@@ -42,8 +45,6 @@ namespace MyNewBlog.Controllers
         }
 
         // POST: Categories/Create
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,cateName")] Category category)
@@ -74,8 +75,6 @@ namespace MyNewBlog.Controllers
         }
 
         // POST: Categories/Edit/5
-        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
-        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,cateName")] Category category)

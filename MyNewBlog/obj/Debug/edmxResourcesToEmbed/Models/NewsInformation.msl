@@ -37,6 +37,7 @@
     <EntitySetMapping Name="Comment">
       <EntityTypeMapping TypeName="NewsInformationModel.Comment">
         <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="to_uid" ColumnName="to_uid" />
           <ScalarProperty Name="from_uid" ColumnName="from_uid" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="topic_type" ColumnName="topic_type" />
@@ -45,27 +46,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Reply">
-      <EntityTypeMapping TypeName="NewsInformationModel.Reply">
-        <MappingFragment StoreEntitySet="Reply">
-          <ScalarProperty Name="to_uid" ColumnName="to_uid" />
-          <ScalarProperty Name="from_uid" ColumnName="from_uid" />
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="replty_type" ColumnName="replty_type" />
-          <ScalarProperty Name="reply_id" ColumnName="reply_id" />
-          <ScalarProperty Name="comment_id" ColumnName="comment_id" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="NewsInformationModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
-          <ScalarProperty Name="userAccount" ColumnName="userAccount" />
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
           <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
-          <ScalarProperty Name="userPassword" ColumnName="userPassword" />
           <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="NewsInformationModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="adminPassword" ColumnName="adminPassword" />
+          <ScalarProperty Name="adminName" ColumnName="adminName" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

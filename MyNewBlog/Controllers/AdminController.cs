@@ -9,11 +9,14 @@ using MyNewBlog.Models;
 using PagedList;
 using Microsoft.AspNetCore.Mvc;
 using MyNewBlog.App_Start;
+using System.Web.UI;
 
 namespace MyNewBlog.Controllers
 {
     //设置过滤器,需要登录账号才能进后台
     [LoginFilter]
+    //添加缓冲
+    [OutputCache(CacheProfile = "CacheFiveMin", Location = OutputCacheLocation.Client)]
     public class AdminController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
@@ -37,7 +40,7 @@ namespace MyNewBlog.Controllers
         }
 
 
-        //GET: Cates 模态框获取分类
+        //GET: Cates 模态框文章信息
         [HttpGet]
 
         public JsonResult GetArticleInfo(int id)
@@ -53,7 +56,7 @@ namespace MyNewBlog.Controllers
 
   
         //GET: Dashboard/UserDetails
-        public ActionResult UserDetails(int? page)
+        public ActionResult AdminDetails(int? page)
         {
             int pageSize = 13;
 
@@ -63,11 +66,11 @@ namespace MyNewBlog.Controllers
             }
             int pageNumber = page ?? 1;
 
-            return View(db.User.ToList().ToPagedList(pageNumber, pageSize));
+            return View(db.Admin.ToList().ToPagedList(pageNumber, pageSize));
         }
 
       
-        public ActionResult Users(int ? page)
+        public ActionResult Admins(int ? page)
         {
             int pageSize = 13;
 
@@ -76,8 +79,8 @@ namespace MyNewBlog.Controllers
                 page = 1;
             }
             int pageNumber = page ?? 1;
-            var Users = db.User.ToList().ToPagedList(pageNumber, pageSize);
-            ViewBag.Users = Users;
+            var Admins = db.Admin.ToList().ToPagedList(pageNumber, pageSize);
+            ViewBag.Admins = Admins;
             return View();
         }
 
@@ -92,9 +95,6 @@ namespace MyNewBlog.Controllers
                 page = 1;
             }
             int pageNumber = page ?? 1;
-
-            var categories = from c in db.Category
-                             select c;
             String[] cateNames = {"未分类","时政新闻","国际新闻","财经新闻","体育新闻"
                     ,"教育新闻","游戏新闻","时尚新闻","科技新闻","传媒新闻" };
             ViewBag.cateNames = cateNames;

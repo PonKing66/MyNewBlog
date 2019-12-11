@@ -1,0 +1,16 @@
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\zh-Hans\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\UnitTestMyNewBlog.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\UnitTestMyNewBlog.pdb
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\obj\Debug\UnitTestMyNewBlog.csprojAssemblyReference.cache
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\obj\Debug\UnitTestMyNewBlog.csproj.CopyComplete
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\obj\Debug\UnitTestMyNewBlog.dll
+F:\WorkSpace\MyNewBlog\UnitTestMyNewBlog\obj\Debug\UnitTestMyNewBlog.pdb

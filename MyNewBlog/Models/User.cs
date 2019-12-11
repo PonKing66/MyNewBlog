@@ -10,20 +10,13 @@
 namespace MyNewBlog.Models
 {
     using System;
-    using System.ComponentModel.DataAnnotations;
-
+    using System.Collections.Generic;
+    
     public partial class User
     {
         public int id { get; set; }
-        [StringLength(50, MinimumLength = 4)]
         public string userName { get; set; }
-        [StringLength(50, MinimumLength = 4)]
-        public string userPassword { get; set; }
+        public string userEmail { get; set; }
         public Nullable<int> imageHeader { get; set; }
-        [UserValidation]
-        [StringLength(50, MinimumLength = 4)]
-        public string userAccount { get; set; }
-        public int isAdmin { get; set; }
-        public bool RememberMe { get; set; }
     }
 }

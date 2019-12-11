@@ -19,5 +19,6 @@ namespace MyNewBlog.Models
         public Nullable<int> topic_type { get; set; }
         public string content { get; set; }
         public Nullable<int> from_uid { get; set; }
+        public Nullable<int> to_uid { get; set; }
     }
 }

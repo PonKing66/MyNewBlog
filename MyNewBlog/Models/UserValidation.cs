@@ -19,8 +19,8 @@ namespace MyNewBlog.Models
             if (value is string)
             {
                 string s = (string)value;
-                var temp = from u in db.User
-                           where u.userAccount == s
+                var temp = from u in db.Admin
+                           where u.adminName == s
                            select u;
                 if (temp.Count() > 0)
                 {

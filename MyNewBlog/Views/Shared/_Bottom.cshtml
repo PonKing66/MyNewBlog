@@ -9,18 +9,32 @@
 
 <footer class="blockquote-footer navbar-inverse">
     <div class="zerogrid wrap-footer">
-        <div class="row">
-            <div class="bottom-social center-block">
+        <div class="row text-monospace">
+            <div class="col-sm-2 col center-block">
+                <h3>捐赠</h3>
+                <br />
+                <div class="container">
+                    <img src="~/images/wechat.jpg" style="width:110px;height:110px;" />
+                </div>
+            </div>
+            <div class="col-sm-2 col center-block">
+                <h3>友情链接</h3>
+                <br />
                 @{
                     foreach (var item in linkItems)
                     {
-                        <a href="@item.url" style="color:white"><i class="fa fa-facebook"></i>@item.title</a>
+                        <a href="@item.url" style="color:white"><i class="fa fa-facebook"></i>@item.title</a><br />
                     }
                 }
             </div>
+            <div class="col-sm-8 col center-block">
+                <div class="container">
+                    <p>忙碌了一年，辛苦了一年，当圣诞节到来的时候，穿上新装，去迎接她吧。一个华丽的圣诞节，一定会带给你不一样的好心情！</p>
+                </div>
+            </div>
         </div>
         <div class="copyright">
-            Copyright &copy;<p>&copy; @DateTime.Now.Year - Gafulungatie网站</p>
+            Copyright &copy;<p>&copy; @DateTime.Now.Year - Atención网站</p>
         </div>
     </div>
 

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model MyNewBlog.Models.User
+@model MyNewBlog.Models.Admin
 
 <html lang="zh-CN">
 
@@ -32,19 +32,16 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <label for="inputEmail" class="sr-only">Account</label>
-                @Html.EditorFor(model => model.userAccount, new { htmlAttributes = new { @class = "form-control", @placeholder = "账号", @required = "", @autofocus = "" } })
-                @Html.ValidationMessageFor(model => model.userAccount, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.adminName, new { htmlAttributes = new { @class = "form-control", @placeholder = "账号", @required = "", @autofocus = "" } })
+                @Html.ValidationMessageFor(model => model.adminName, "", new { @class = "text-danger" })
 
 
                 <br/>
 
                 <label for="inputPassword" class="sr-only">Password</label>
-                @Html.EditorFor(model => model.userPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "密码", @required = "", @autofocus = "" } })
-                @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.adminPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "密码", @required = "", @autofocus = "" } })
+                @Html.ValidationMessageFor(model => model.adminPassword, "", new { @class = "text-danger" })
 
-
-                @Html.CheckBoxFor(model => model.RememberMe)
-                @Html.LabelFor(model => model.RememberMe)
 
 
                 <a href="~/Login/create" class="glyphicon-text-color float-lg-right">注册</a>

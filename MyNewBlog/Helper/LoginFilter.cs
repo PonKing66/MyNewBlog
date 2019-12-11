@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using MyNewBlog.Models;
+using System;
 using System.Web;
 using System.Web.Mvc;
 
@@ -20,7 +19,8 @@ namespace MyNewBlog.App_Start
             //判断Cookie用户名密码是否存在
             //HttpContext.Current.Request.ContentEncoding.
             HttpCookie cookieName = HttpContext.Current.Request.Cookies.Get("Account");
-            if (cookieName == null || ( cookieName.Values["IsAdmin"] != "True"|| cookieName.Values["userAccount"]!="admin"))
+            var admin = HttpContext.Current.Session["admin"];
+            if (admin == null)
             {
                 filterContext.Result = new RedirectResult("/Login/Index");
             }
