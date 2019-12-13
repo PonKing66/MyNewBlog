@@ -37,7 +37,15 @@ namespace MyNewBlog.Controllers
                                select a;
                 return View(articles.ToList().ToPagedList(pageNumber, pageSize));
             }
-            return View(db.Article.ToList().ToPagedList(pageNumber, pageSize));
+            else
+            {
+                //默认资讯按时间最早排序
+                var articles = from a in db.Article
+                               orderby a.date descending
+                               select a;
+                return View(articles.ToList().ToPagedList(pageNumber, pageSize));
+            }
+           
         }
 
         // GET: Home
@@ -69,6 +77,21 @@ namespace MyNewBlog.Controllers
                 return HttpNotFound();
             }
             return View(article);
+        }
+
+
+        [HttpPost]
+        public ActionResult Comment([Bind(Include = "topicId,userEmail,userName,content")]Comment comment)
+        {
+            System.Diagnostics.Debug.Write(comment.topicId);
+           // if (ModelState.IsValid)
+           // {
+           //     comment.createTime = new DateTime().Date;
+            //    db.Entry(comment).State = EntityState.Modified;
+            //    db.SaveChanges();
+                //return RedirectToAction("Index");
+          //  }
+            return View();
         }
         protected override void Dispose(bool disposing)
         {

@@ -34,11 +34,11 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="topic_id" Type="int" />
-    <Property Name="topic_type" Type="int" />
+    <Property Name="topicId" Type="int" />
     <Property Name="content" Type="text" />
-    <Property Name="from_uid" Type="int" />
-    <Property Name="to_uid" Type="int" />
+    <Property Name="createTime" Type="date" />
+    <Property Name="userName" Type="nvarchar" MaxLength="50" />
+    <Property Name="userEmail" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Link">
     <Key>

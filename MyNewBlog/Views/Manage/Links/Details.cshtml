@@ -1,0 +1,46 @@
+﻿@using MyNewBlog.Models
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Manage/_DashLayout.cshtml";
+    Link link = ViewBag.link;
+}
+
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>Link</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => link.title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => link.title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => link.url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => link.url)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => link.desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => link.desc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = link.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

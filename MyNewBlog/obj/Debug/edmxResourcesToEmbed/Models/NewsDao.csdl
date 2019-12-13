@@ -29,17 +29,6 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="cateName" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Comment">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="topic_id" Type="Int32" />
-    <Property Name="topic_type" Type="Int32" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="from_uid" Type="Int32" />
-    <Property Name="to_uid" Type="Int32" />
-  </EntityType>
   <EntityType Name="Link">
     <Key>
       <PropertyRef Name="id" />
@@ -62,8 +51,19 @@
     <EntitySet Name="Admin" EntityType="Self.Admin" />
     <EntitySet Name="Article" EntityType="Self.Article" />
     <EntitySet Name="Category" EntityType="Self.Category" />
-    <EntitySet Name="Comment" EntityType="Self.Comment" />
     <EntitySet Name="Link" EntityType="Self.Link" />
     <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="Comment" EntityType="NewsInformationModel.Comment" />
   </EntityContainer>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="topicId" Type="Int32" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="createTime" Type="DateTime" Precision="0" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

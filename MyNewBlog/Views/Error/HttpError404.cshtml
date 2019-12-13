@@ -1,15 +1,26 @@
 ﻿
 @using MyNewBlog.Models;
 @{
-  var alert = TempData["Alert"] as Alert;
+    var alert = TempData["Alert"] as Alert;
 }
-<div>
-   <h1 class="text-center position-fixed">错误：页面未找到</h1>
-  @if (alert != null)
-  {
-    @:错误:@alert.Type.ToString().ToLower()
-    <br />
-    @alert.Message
-  }
+<div class="center-block">
+    <h1 class="text-center position-fixed danger">错误：页面未找到</h1>
+    @if (alert != null)
+    {
+        @:错误:@alert.Type.ToString().ToLower()
+        <br />
+        @alert.Message
+    }
 </div>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

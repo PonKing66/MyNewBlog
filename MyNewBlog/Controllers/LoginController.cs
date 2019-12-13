@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
+﻿
 using MyNewBlog.Models;
+using System.Data;
+using System.Linq;
+using System.Web.Mvc;
+
 
 namespace MyNewBlog.Controllers
 {
@@ -38,7 +35,7 @@ namespace MyNewBlog.Controllers
             {
                 //若是管理员,则重定向/admin/Index,否则回主页面
                 Session["admin"] = admin;
-                return Redirect("~/admin/Index");
+                return Redirect("~/Manage/articles");
             }
             else
             {

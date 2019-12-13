@@ -1,0 +1,37 @@
+﻿@using MyNewBlog.Models
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Manage/_DashLayout.cshtml";
+    Admin admin = ViewBag.Admin;
+    
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => admin.adminName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => admin.adminName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => admin.adminPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model =>admin.adminPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = admin.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

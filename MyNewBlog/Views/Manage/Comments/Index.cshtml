@@ -1,0 +1,81 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using MyNewBlog.Models;
+@{
+    Layout = "~/Views/Manage/_DashLayout.cshtml";
+    ViewBag.item = "comment";
+
+}
+
+@Styles.Render("~/Content/Dash/css")
+<div class="row">
+    <div class="col-md-4 col-md-offset-10" style="padding:4px;">
+        @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-success btn-sm",style="padding:4px;" })
+    </div>
+</div>
+
+
+
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>
+                    topicId
+                </th>
+                <th>
+                  content
+                </th>
+                <th>
+                   createTime
+                </th>
+                <th>
+                   userName
+                </th>
+                <th>
+                   userEmail
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.comments)
+            {
+                Comment comment = item;
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => comment.topicId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => comment.content)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => comment.createTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => comment.userName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => comment.userEmail)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="t-center">
+
+    @Html.PagedListPager((IPagedList)(ViewBag.comments), page => Url.Action("Index",
+        new { page }))
+</div>
+@RenderPage("~/Views/Manage/_FunctionScript.cshtml")
+

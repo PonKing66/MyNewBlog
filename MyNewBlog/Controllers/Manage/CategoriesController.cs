@@ -6,21 +6,30 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
+using MyNewBlog.App_Start;
 using MyNewBlog.Models;
+using PagedList;
 
-namespace MyNewBlog.Controllers
+namespace MyNewBlog.Controllers.Manage
 {
-    //添加缓冲
-    [OutputCache(CacheProfile = "CacheFiveMin", Location = OutputCacheLocation.Client)]
+    [LoginFilter]
     public class CategoriesController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
 
         // GET: Categories
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Category.ToList());
+            int pageSize = 13;
+
+            if (page == 0)
+            {
+                page = 1;
+            }
+            int pageNumber = page ?? 1;
+            var categories = db.Category.ToList().ToPagedList(pageNumber, pageSize);
+            ViewBag.categories = categories;
+            return View();
         }
 
         // GET: Categories/Details/5
@@ -35,7 +44,8 @@ namespace MyNewBlog.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.category = category;
+            return View();
         }
 
         // GET: Categories/Create
@@ -45,6 +55,8 @@ namespace MyNewBlog.Controllers
         }
 
         // POST: Categories/Create
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,cateName")] Category category)
@@ -56,7 +68,8 @@ namespace MyNewBlog.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(category);
+            ViewBag.category = category;
+            return View();
         }
 
         // GET: Categories/Edit/5
@@ -71,10 +84,13 @@ namespace MyNewBlog.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.category = category;
+            return View();
         }
 
         // POST: Categories/Edit/5
+        // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
+        // 详细信息，请参阅 https://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,cateName")] Category category)
@@ -85,7 +101,8 @@ namespace MyNewBlog.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(category);
+            ViewBag.category = category;
+            return View();
         }
 
         // GET: Categories/Delete/5
@@ -100,7 +117,8 @@ namespace MyNewBlog.Controllers
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.category = category;
+            return View();
         }
 
         // POST: Categories/Delete/5

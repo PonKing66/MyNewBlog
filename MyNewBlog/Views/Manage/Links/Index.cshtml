@@ -1,5 +1,7 @@
-﻿@{
-    Layout = "~/Views/Admin/_DashLayout.cshtml";
+﻿
+@using MyNewBlog.Models
+@{
+    Layout = "~/Views/Manage/_DashLayout.cshtml";
     ViewBag.title = "links";
 }
 
@@ -13,10 +15,8 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4 col-md-offset-10">
-            <button class="btn btn-primary btn-sm" id="add_modal_btn">新增</button>
-            <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
-
+        <div class="col-md-4 col-md-offset-10" style="padding:4px;">
+            @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-success btn-sm"})
         </div>
     </div>
     <div class="table-responsive">
@@ -64,11 +64,10 @@
                             @item.url.ToString()
                         </td>
 
-
-
                         <td>
-                            @Html.ActionLink("编辑", "Edit", new { id = item.id }) |
-                            @Html.ActionLink("删除", "Delete", new { id = item.id })
+                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
 
                         </td>
                         <td>
@@ -84,14 +83,10 @@
     <div class="t-center">
        
 
-        @Html.PagedListPager((IPagedList)ViewBag.Links, page => Url.Action("Links",
+        @Html.PagedListPager((IPagedList)ViewBag.Links, page => Url.Action("Index",
             new { page }))
     </div>
 
 </div>
 <script src="~/Scripts/jquery1111.min.js"></script>
 
-<script type="text/javascript">
-    //查询部门信息
-
-</script>

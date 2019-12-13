@@ -10,21 +10,15 @@ namespace MyNewBlog.App_Start
     [AttributeUsage(AttributeTargets.All, AllowMultiple = true, Inherited = true)]
     public class LoginFilterAttribute : ActionFilterAttribute
     {
-        /// <summary>
-        /// OnActionExecuting是Action执行前的操作
-        /// </summary>
-        /// <param name="filterContext"></param>
+        
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            //判断Cookie用户名密码是否存在
-            //HttpContext.Current.Request.ContentEncoding.
-            HttpCookie cookieName = HttpContext.Current.Request.Cookies.Get("Account");
+            //判断管理员是否已登录
             var admin = HttpContext.Current.Session["admin"];
             if (admin == null)
             {
                 filterContext.Result = new RedirectResult("/Login/Index");
             }
-
         }
     
     }

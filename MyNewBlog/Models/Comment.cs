@@ -15,10 +15,10 @@ namespace MyNewBlog.Models
     public partial class Comment
     {
         public int id { get; set; }
-        public Nullable<int> topic_id { get; set; }
-        public Nullable<int> topic_type { get; set; }
+        public Nullable<int> topicId { get; set; }
         public string content { get; set; }
-        public Nullable<int> from_uid { get; set; }
-        public Nullable<int> to_uid { get; set; }
+        public Nullable<System.DateTime> createTime { get; set; }
+        public string userName { get; set; }
+        public string userEmail { get; set; }
     }
 }

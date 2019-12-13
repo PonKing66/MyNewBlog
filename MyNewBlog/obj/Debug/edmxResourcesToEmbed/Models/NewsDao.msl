@@ -33,18 +33,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Comment">
-      <EntityTypeMapping TypeName="NewsInformationModel.Comment">
-        <MappingFragment StoreEntitySet="Comment">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="topic_id" ColumnName="topic_id" />
-          <ScalarProperty Name="topic_type" ColumnName="topic_type" />
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="from_uid" ColumnName="from_uid" />
-          <ScalarProperty Name="to_uid" ColumnName="to_uid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Link">
       <EntityTypeMapping TypeName="NewsInformationModel.Link">
         <MappingFragment StoreEntitySet="Link">
@@ -62,6 +50,18 @@
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="userEmail" ColumnName="userEmail" />
           <ScalarProperty Name="imageHeader" ColumnName="imageHeader" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comment">
+      <EntityTypeMapping TypeName="NewsInformationModel.Comment">
+        <MappingFragment StoreEntitySet="Comment">
+          <ScalarProperty Name="userEmail" ColumnName="userEmail" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="createTime" ColumnName="createTime" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="topicId" ColumnName="topicId" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

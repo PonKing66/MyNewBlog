@@ -1,4 +1,5 @@
 using MyNewBlog.Controllers;
+using MyNewBlog.ViewConfig;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace MyNewBlog
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RegisterView();
            // System.Web.HttpContext.Current.Request.Cookies.Clear();
         }
 
@@ -44,6 +46,11 @@ namespace MyNewBlog
             //Response.RedirectToRoute(new { controller = "Error", action = "HttpError404" });
         }
 
+        protected void RegisterView()
+        {
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new ViewEngine());
+        }
 
     }
 }

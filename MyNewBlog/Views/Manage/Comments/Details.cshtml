@@ -1,0 +1,60 @@
+﻿@using MyNewBlog.Models;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Manage/_DashLayout.cshtml";
+    Comment comment = ViewBag.comment;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => comment.topicId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => comment.topicId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => comment.content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => comment.content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => comment.createTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => comment.createTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => comment.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => comment.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => comment.userEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => comment.userEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = comment.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
