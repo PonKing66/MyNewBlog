@@ -19,28 +19,27 @@ namespace MyNewBlog.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Index(Admin admin)
         {
+            if (ModelState.IsValid)
+            {
+                //查询是否存在该账户
+                var result = from a in db.Admin
+                             where a.adminName == admin.adminName
+                             select a;
+                if (result.Count()>0&&result.First().adminPassword != admin.adminPassword)
+                {
+                    ModelState.AddModelError("AdminError", "用户密码或账户错误");
+                    return View("Login");
+                }
 
-            //查询是否存在该账户
-            var result = from a in db.Admin
-                         where a.adminName == admin.adminName
-                         select a;
-            if (result.Count() == 0)
-            {
-                return View("Error");
-            }
-            Admin admin1 = db.Admin.Find(result.First().id);
-            if (admin1.adminPassword == admin.adminPassword)
-            {
                 //若是管理员,则重定向/admin/Index,否则回主页面
                 Session["admin"] = admin;
                 return Redirect("~/Manage/articles");
+                
             }
-            else
-            {
-                return View("Login");
-            }
+            return View("Login");
         }
 
         // GET: Users/Create

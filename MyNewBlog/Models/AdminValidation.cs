@@ -7,12 +7,12 @@ using System.Web;
 namespace MyNewBlog.Models
 {
     //自定义校验
-    public class UserValidation : ValidationAttribute
+    public class AdminValidation : ValidationAttribute
     {
         private NewsInformationEntities db = new NewsInformationEntities();
-        public UserValidation()
+        public AdminValidation()
         {
-            this.ErrorMessage = "用户账号已存在";
+            this.ErrorMessage = "用户账号不存在";
         }
         public override bool IsValid(object value)
         {

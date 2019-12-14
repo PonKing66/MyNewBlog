@@ -19,6 +19,7 @@ namespace MyNewBlog
               defaults: new { controller = "Articles", action = "Index", id = UrlParameter.Optional }
           );
 
+           
             routes.MapRoute(
               name: "Home",
               url: "{controller}/{action}/{id}",

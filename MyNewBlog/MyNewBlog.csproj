@@ -223,7 +223,7 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>NewsDao.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserValidation.cs" />
+    <Compile Include="Models\AdminValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\ViewEngine.cs" />
   </ItemGroup>

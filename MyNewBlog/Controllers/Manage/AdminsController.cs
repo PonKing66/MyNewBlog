@@ -12,6 +12,7 @@ using System.Web.Mvc;
 namespace MyNewBlog.Controllers.Manage
 {
     [LoginFilter]
+    [RouteArea("Manage/admins")]
     public class AdminsController : Controller
     {
         private NewsInformationEntities db = new NewsInformationEntities();
