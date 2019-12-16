@@ -7,20 +7,20 @@
     Admin admin = ViewBag.Admin;
 }
 
-<h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Admin</h4>
+        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model =>admin.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => admin.adminName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">用户名</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => admin.adminName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => admin.adminName, "", new { @class = "text-danger" })
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => admin.adminPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">用户密码</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => admin.adminPassword, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => admin.adminPassword, "", new { @class = "text-danger" })
@@ -37,12 +37,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-dark btn-sm" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>

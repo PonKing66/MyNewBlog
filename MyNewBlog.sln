@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyNewBlog", "MyNewBlog\MyNe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestMyNewBlog", "UnitTestMyNewBlog\UnitTestMyNewBlog.csproj", "{2313F771-A3BF-42F3-ACFA-57FB5A3C03D7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestXml", "..\..\visual-stdio-2019\asp_core_web_4\练习\TestXml\TestXml\TestXml.csproj", "{6924FA69-5818-4DFF-B6CA-6C5CE138EB17}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{2313F771-A3BF-42F3-ACFA-57FB5A3C03D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2313F771-A3BF-42F3-ACFA-57FB5A3C03D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2313F771-A3BF-42F3-ACFA-57FB5A3C03D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6924FA69-5818-4DFF-B6CA-6C5CE138EB17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6924FA69-5818-4DFF-B6CA-6C5CE138EB17}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6924FA69-5818-4DFF-B6CA-6C5CE138EB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6924FA69-5818-4DFF-B6CA-6C5CE138EB17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

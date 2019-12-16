@@ -6,20 +6,20 @@
     Comment comment = ViewBag.comment;
 }
 
-<h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Comment</h4>
+      
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => comment.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => comment.topicId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">文章ID</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => comment.topicId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => comment.topicId, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => comment.content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">内容</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => comment.content, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => comment.content, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => comment.createTime, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">创建时间</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => comment.createTime, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => comment.createTime, "", new { @class = "text-danger" })
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => comment.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">用户名</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => comment.userName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => comment.userName, "", new { @class = "text-danger" })
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => comment.userEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">邮箱</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => comment.userEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => comment.userEmail, "", new { @class = "text-danger" })
@@ -60,12 +60,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-dark btn-sm" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>

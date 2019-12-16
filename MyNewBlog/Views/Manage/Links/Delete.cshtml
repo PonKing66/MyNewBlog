@@ -8,15 +8,15 @@
     Link link = ViewBag.link;
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+
+<h3>是否确定删除?</h3>
 <div>
-    <h4>Link</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => link.title)
+            标题
         </dt>
 
         <dd>
@@ -24,7 +24,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => link.url)
+            链接
         </dt>
 
         <dd>
@@ -32,7 +32,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => link.desc)
+            描述
         </dt>
 
         <dd>
@@ -45,8 +45,8 @@
     {
         @Html.AntiForgeryToken()
 <div class="form-actions no-color">
-    <input type="submit" value="Delete" class="btn btn-sm btn-danger" /> |
-    @Html.ActionLink("Back to List", "Index")
+    <input type="submit" value="删除" class="btn btn-sm btn-danger" /> |
+    @Html.ActionLink("返回列表", "Index", "", new { @class = "btn btn-primary btn-sm" })
 </div>
     }
 </div>

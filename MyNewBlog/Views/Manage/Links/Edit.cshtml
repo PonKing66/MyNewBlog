@@ -6,20 +6,20 @@
     Link link = ViewBag.link;
 }
 
-<h2>Edit</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Link</h4>
+       
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => link.id)
 
         <div class="form-group">
-            @Html.LabelFor(model => link.title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">标题</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => link.title, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => link.title, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => link.url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">链接</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => link.url, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => link.url, "", new { @class = "text-danger" })
@@ -35,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => link.desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">描述</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => link.desc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model =>link.desc, "", new { @class = "text-danger" })
@@ -44,12 +44,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="保存" class="btn btn-dark btn-sm" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("返回列表", "Index")
 </div>

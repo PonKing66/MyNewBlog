@@ -3,7 +3,7 @@
 @using MyNewBlog.Models;
 @{
     Layout = "~/Views/Manage/_DashLayout.cshtml";
-    ViewBag.item = "comment";
+    ViewBag.item = "comments";
 
 }
 
@@ -22,19 +22,19 @@
         <thead>
             <tr>
                 <th>
-                    topicId
+                    文章ID
                 </th>
                 <th>
-                  content
+                  内容
                 </th>
                 <th>
-                   createTime
+                   创建时间
                 </th>
                 <th>
-                   userName
+                  用户名
                 </th>
                 <th>
-                   userEmail
+                   邮箱
                 </th>
                 <th></th>
             </tr>
@@ -61,9 +61,9 @@
                         @Html.DisplayFor(modelItem => comment.userEmail)
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
+                        @Html.ActionLink("编辑", "Create", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                        @Html.ActionLink("详情", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
+                        @Html.ActionLink("删除", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
                     </td>
                 </tr>
             }

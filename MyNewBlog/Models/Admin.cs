@@ -11,20 +11,11 @@ namespace MyNewBlog.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-
-    [AdminValidation]
+    
     public partial class Admin
     {
         public int id { get; set; }
-
-        [Required(ErrorMessage = "必填项")]
-        [MinLength(length:4)]
         public string adminName { get; set; }
-
-        [Required(ErrorMessage = "必填项")]
-        [MinLength(length: 4)]
         public string adminPassword { get; set; }
     }
 }

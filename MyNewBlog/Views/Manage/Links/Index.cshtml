@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Manage/_DashLayout.cshtml";
     ViewBag.title = "links";
+    ViewBag.item = "links";
 }
 
 
@@ -39,9 +40,7 @@
                     <th>
                         操作
                     </th>
-                    <th>
-                        全选/反选 <input type="checkbox" id="check_all" onclick="" />
-                    </th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -65,14 +64,12 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm" })
+                            @Html.ActionLink("编辑", "Create", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                            @Html.ActionLink("详情", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
+                            @Html.ActionLink("删除", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
 
                         </td>
-                        <td>
-                            <input type='checkbox' class='check_item' />
-                        </td>
+                        
                     </tr>
                 }
 

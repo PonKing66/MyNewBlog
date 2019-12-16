@@ -8,14 +8,14 @@
 
 
 
-<h2>Details</h2>
+
 
 <div>
-    <h4>Link</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => link.title)
+            标题
         </dt>
 
         <dd>
@@ -23,7 +23,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => link.url)
+            链接
         </dt>
 
         <dd>
@@ -31,7 +31,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => link.desc)
+            描述
         </dt>
 
         <dd>
@@ -41,6 +41,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = link.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("编辑", "Edit", new { id = link.id }) |
+    @Html.ActionLink("返回列表", "Index")
 </p>

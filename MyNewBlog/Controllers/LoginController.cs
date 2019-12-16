@@ -36,6 +36,7 @@ namespace MyNewBlog.Controllers
 
                 //若是管理员,则重定向/admin/Index,否则回主页面
                 Session["admin"] = admin;
+                HttpContext.Session.Timeout = 15;
                 return Redirect("~/Manage/articles");
                 
             }

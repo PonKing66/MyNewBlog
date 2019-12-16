@@ -3,7 +3,7 @@
 @using MyNewBlog.Models;
 @{
     Layout = "~/Views/Manage/_DashLayout.cshtml";
-    ViewBag.item = "category";
+    ViewBag.item = "categories";
 
 }
 
@@ -50,9 +50,9 @@
 
 
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
+                        @Html.ActionLink("编辑", "Create", new { id = item.id }, new { @class = "btn btn-primary btn-sm" }) |
+                        @Html.ActionLink("详情", "Details", new { id = item.id }, new { @class = "btn btn-info btn-sm" }) |
+                        @Html.ActionLink("删除", "Delete", new { id = item.id }, new { @class = "btn btn-danger btn-sm " })
 
                     </td>
 
