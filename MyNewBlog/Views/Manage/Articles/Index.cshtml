@@ -19,13 +19,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-md-offset-10" style="padding:4px;">
-            <button class="btn btn-primary btn-sm" id="article_add_modal_btn">新增</button>
+            <button class="btn btn-primary btn-sm" id="article_add_modal_btn">新增</button>|
             <button class="btn btn-danger btn-sm" id="delete_all_btn">删除</button>
         </div>
     </div>
     <div class="row">
         <div class="table-responsive">
-            <table class="table table-striped table-sm">
+            <table class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th>
@@ -79,8 +79,9 @@
                                 @ViewBag.cateNames[Convert.ToInt32(item.categoryId)]
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-success btn-article-update" articleId=" @item.id.ToString()">编辑</button>
+                                <button class="btn btn-primary btn-sm btn-article-update" articleId=" @item.id.ToString()">编辑</button>
                                 <button class="btn btn-sm btn-danger btn-article-delete" articleId=" @item.id.ToString()">删除</button>
+
                             </td>
                             <td>
                                 <input type='checkbox' class='check_item' />
