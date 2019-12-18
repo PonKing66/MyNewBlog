@@ -18,7 +18,7 @@ namespace MyNewBlog.Controllers.Manage
         // GET: Article
 
 
-        //GET: Dashboard/Articles
+        //GET: Articles
         public ActionResult Index(int? page)
         {
             int pageSize = 13;
@@ -40,7 +40,7 @@ namespace MyNewBlog.Controllers.Manage
 
 
 
-        // POST: Dashboard/Edit/5 文章编辑
+        // POST:  文章编辑
 
         [HttpPost]
         [ValidateInput(false)]
@@ -72,7 +72,7 @@ namespace MyNewBlog.Controllers.Manage
                 db.Article.Add(article);
                 db.SaveChanges();
             }
-            return RedirectToAction("Articles");
+            return RedirectToAction("Index");
         }
 
 
