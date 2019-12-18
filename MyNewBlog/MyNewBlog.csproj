@@ -253,6 +253,7 @@
     <Content Include="Content\style.css" />
     <Content Include="Content\zerogrid.css" />
     <Content Include="favicon.ico" />
+    <Content Include="images\bg.png" />
     <Content Include="images\header\0.jpg" />
     <Content Include="images\header\1.jpg" />
     <Content Include="images\header\2.jpg" />

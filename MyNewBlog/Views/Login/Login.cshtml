@@ -28,8 +28,6 @@
             @Html.AntiForgeryToken()
             <h1 class="h3 mb-3 font-weight-normal">管理员</h1>
 
-
-
             <label for="inputEmail" class="sr-only">Account</label>
             @Html.EditorFor(model => model.adminName, new { htmlAttributes = new { @class = "form-control", @placeholder = "账号", @required = "", @autofocus = "" } })
             @Html.ValidationMessageFor(model => model.adminName, "", new { @class = "text-danger" })
@@ -42,7 +40,7 @@
             @Html.ValidationMessageFor(model => model.adminPassword, "", new { @class = "text-danger" })
 
 
-            @Html.ValidationMessage("AdminError", new {  @class = "text-danger" })
+            @Html.ValidationMessage("AdminError", new { @class = "text-danger" })
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             <p class="mt-5 mb-3 text-muted">© 2017-2019</p>

@@ -24,10 +24,10 @@ namespace MyNewBlog.Models
                            select u;
                 if (temp.Count() > 0)
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 }

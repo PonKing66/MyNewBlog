@@ -28,16 +28,21 @@ namespace MyNewBlog.Controllers
                 var result = from a in db.Admin
                              where a.adminName == admin.adminName
                              select a;
-                if (result.Count()>0&&result.First().adminPassword != admin.adminPassword)
+                if (result.Count() > 0 && result.First().adminPassword != admin.adminPassword)
                 {
                     ModelState.AddModelError("AdminError", "用户密码或账户错误");
                     return View("Login");
                 }
+                else if (result.Count() > 0 && result.First().adminPassword == admin.adminPassword)
+                {
+                    //若是管理员,则重定向/admin/Index,否则回主页面
+                    Session["admin"] = admin;
+                    HttpContext.Session.Timeout = 15;
+                    return Redirect("~/Manage/articles");
+                }
 
-                //若是管理员,则重定向/admin/Index,否则回主页面
-                Session["admin"] = admin;
-                HttpContext.Session.Timeout = 15;
-                return Redirect("~/Manage/articles");
+                  
+               
                 
             }
             return View("Login");
